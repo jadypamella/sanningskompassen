@@ -144,12 +144,12 @@ export function Footer() {
             <ul className="space-y-3 text-sm">
               <li>
                 <Link to="/research" className="inline-flex items-center gap-2 text-paper/80 hover:text-gold transition">
-                  <BookOpen className="h-4 w-4 text-gold" /> Research
+                  <BookOpen className="h-4 w-4 text-gold" /><span>Research</span>
                 </Link>
               </li>
               <li>
                 <Link to="/about" className="inline-flex items-center gap-2 text-paper/80 hover:text-gold transition">
-                  <Users className="h-4 w-4 text-gold" /> The Crew
+                  <Users className="h-4 w-4 text-gold" /><span>The Crew</span>
                 </Link>
               </li>
               <li>
@@ -159,7 +159,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-paper/80 hover:text-gold transition"
                 >
-                  <Vote className="h-4 w-4 text-gold" /> How To Vote
+                  <Vote className="h-4 w-4 text-gold" /><span>How To Vote</span>
                 </a>
               </li>
             </ul>
@@ -174,7 +174,7 @@ export function Footer() {
                   href="mailto:hello@sanningskompassen.se"
                   className="inline-flex items-center gap-2 text-paper/80 hover:text-gold transition"
                 >
-                  <Mail className="h-4 w-4 text-gold" /> hello@sanningskompassen.se
+                  <Mail className="h-4 w-4 text-gold" /><span>hello@sanningskompassen.se</span>
                 </a>
               </li>
               <li>
@@ -184,7 +184,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-paper/80 hover:text-gold transition"
                 >
-                  <Github className="h-4 w-4 text-gold" /> Source On GitHub
+                  <Github className="h-4 w-4 text-gold" /><span>Source On GitHub</span>
                 </a>
               </li>
               <li>
@@ -194,7 +194,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-paper/80 hover:text-gold transition"
                 >
-                  <ExternalLink className="h-4 w-4 text-gold" /> Cambridge Study
+                  <ExternalLink className="h-4 w-4 text-gold" /><span>Cambridge Study</span>
                 </a>
               </li>
             </ul>
