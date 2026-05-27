@@ -301,7 +301,7 @@ function SpotResults({ answers, onRestart }: { answers: Answer[]; onRestart: () 
           <span className="text-muted-foreground"> / {total}</span>
         </div>
         <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-navy text-paper px-5 py-2 font-display font-bold">
-          <span className="text-xl">{skill.emoji}</span> {skill.label}
+          <skill.Icon className="h-5 w-5 text-gold" /> {skill.label}
         </div>
         <div className="mt-2 text-xs uppercase tracking-[3px] text-gold font-bold">+{skill.xp} XP Earned</div>
       </div>
