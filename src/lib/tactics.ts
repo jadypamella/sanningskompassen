@@ -87,3 +87,33 @@ export function reachBand(score: number): "low" | "medium" | "high" {
   if (score >= 40) return "medium";
   return "low";
 }
+
+// Spot game seed deck
+export interface SpotCard {
+  id: number;
+  claim: string;
+  truth: "TRUE" | "FALSE";
+  tactics: TacticId[];
+  explanation: string;
+}
+
+export const SPOT_DECK: SpotCard[] = [
+  { id: 1, claim: "Swedish general elections are held every four years, on the second Sunday of September.", truth: "TRUE", tactics: [], explanation: "Sweden has held general elections every four years since 1994. The fixed date is the second Sunday of September." },
+  { id: 2, claim: "EU citizens with three years of legal residence in Sweden can vote in municipal and regional elections.", truth: "TRUE", tactics: [], explanation: "Set in the Swedish Election Act. Residency, not citizenship, qualifies a person for local-level voting." },
+  { id: 3, claim: "You need a Swedish passport to vote in Sweden.", truth: "FALSE", tactics: ["false_authority", "fear_outrage_hook"], explanation: "False. Citizenship and residency requirements apply, not passport. The claim is built to scare immigrant-background youth away from voting." },
+  { id: 4, claim: "A leaked report from the Nordic Election Bureau says voters under 25 in Järva will be disqualified next election.", truth: "FALSE", tactics: ["false_authority", "us_vs_them"], explanation: "The Nordic Election Bureau does not exist. The claim invents an institution to attack young Järva voters specifically." },
+  { id: 5, claim: "Sweden counts every ballot by hand, even in major elections.", truth: "TRUE", tactics: [], explanation: "Sweden uses paper ballots, counted manually at each polling station, with results verified by multiple officials." },
+  { id: 6, claim: "If you don't vote in Sweden, the government will fine you 500 kronor next year.", truth: "FALSE", tactics: ["fear_outrage_hook"], explanation: "Voting in Sweden is voluntary. No fine exists. The claim is built to pressure-vote through fear." },
+  { id: 7, claim: "Early voting (förtidsröstning) is open at libraries and citizen service offices across Sweden for several weeks before election day.", truth: "TRUE", tactics: [], explanation: "Förtidsröstning is widely available. Most libraries and many municipal offices serve as early voting locations." },
+  { id: 8, claim: "SHOCKING: 90 percent of votes from Husby were thrown out last election because of language barriers.", truth: "FALSE", tactics: ["clickbait", "fear_outrage_hook"], explanation: "False. No such mass rejection happened. The claim uses a shock headline and a fabricated statistic to undermine trust in local voting." },
+  { id: 9, claim: "The Swedish voting age has been 18 since 1975.", truth: "TRUE", tactics: [], explanation: "Sweden lowered the voting age to 18 in 1974, taking effect for the 1976 election. It has remained 18 for over half a century." },
+  { id: 10, claim: "Real Swedes vote one way. The others want to take that right away from us.", truth: "FALSE", tactics: ["us_vs_them"], explanation: "No factual content. It exists to turn an election into an identity war between 'real Swedes' and 'the others'. That framing is the entire trick." },
+];
+
+export const TACTIC_LABELS: Record<TacticId, string> = {
+  clickbait: "Clickbait",
+  false_authority: "False authority",
+  out_of_context_image: "Image out of context",
+  fear_outrage_hook: "Fear or outrage hook",
+  us_vs_them: "Us vs them",
+};
