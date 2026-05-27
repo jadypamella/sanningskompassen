@@ -95,7 +95,11 @@ async function callLLM(claim: string): Promise<z.infer<typeof LlmSchema>> {
     }),
   });
 
-  if (!res.ok) throw new Error(`AI gateway ${res.status}: ${(await res.text()).slice(0, 200)}`);
+  if (!res.ok) {
+    const body = (await res.text()).slice(0, 500);
+    console.error(`[analyze] AI gateway ${res.status}: ${body}`);
+    throw new Error("AI service unavailable");
+  }
   const data = await res.json();
   const content = data?.choices?.[0]?.message?.content ?? "";
   const text = typeof content === "string" ? content : JSON.stringify(content);
@@ -120,7 +124,10 @@ export const analyzeClaim = createServerFn({ method: "POST" })
         console.error(`[analyze] attempt ${i + 1} failed`, e);
       }
     }
-    if (!result) throw new Error("analysis_failed: " + String(lastErr));
+    if (!result) {
+      console.error("[analyze] all attempts failed", lastErr);
+      throw new Error("analysis_failed");
+    }
 
     const { data: row, error } = await supabaseAdmin
       .from("checks")

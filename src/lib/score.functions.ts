@@ -110,7 +110,8 @@ async function callLLM(payload: unknown): Promise<z.infer<typeof LlmSchema>> {
 
   if (!res.ok) {
     const t = await res.text();
-    throw new Error(`AI gateway ${res.status}: ${t.slice(0, 200)}`);
+    console.error(`[score] AI gateway ${res.status}: ${t.slice(0, 500)}`);
+    throw new Error("AI service unavailable");
   }
 
   const data = await res.json();
@@ -160,7 +161,8 @@ export const scoreSubmission = createServerFn({ method: "POST" })
 
     if (!llm) {
       await supabaseAdmin.from("runs").update({ status: "failed" }).eq("id", run.id);
-      throw new Error("Scoring failed: " + String(lastErr));
+      console.error("[score] all attempts failed", lastErr);
+      throw new Error("scoring_failed");
     }
 
     // Re-derive badge defensively (in case the model picked an off-band slug)
