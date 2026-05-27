@@ -148,7 +148,7 @@ function LandingPage() {
                   Try one of these
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {examples.map((ex) => (
+                  {examples.map((ex: { slug: string; label: string; claim_text: string; demo_default: boolean }) => (
                     <button
                       key={ex.slug}
                       type="button"

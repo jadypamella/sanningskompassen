@@ -50,7 +50,7 @@ function ResultPage() {
     setErr(null);
     fetchCheck({ data: { checkId } })
       .then((d) => {
-        if (!cancelled) setData(d as { check: CheckRow; checksToday: number });
+        if (!cancelled) setData(d as unknown as { check: CheckRow; checksToday: number });
       })
       .catch((e) => {
         console.error(e);
