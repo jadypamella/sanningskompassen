@@ -5,8 +5,8 @@ import { CompassMark } from "./CompassMark";
 
 const NAV_LINKS = [
   { to: "/", label: "Quick Scan", badge: "LVL 0" },
-  { to: "/spot", label: "Swipe Arena", badge: "LVL 1" },
-  { to: "/workshop", label: "Vaccine", badge: "LVL 2" },
+  { to: "/workshop", label: "Vaccine", badge: "LVL 1" },
+  { to: "/spot", label: "Swipe Arena", badge: "LVL 2" },
   { to: "/research", label: "Research", badge: null },
   { to: "/about", label: "The Crew", badge: null },
 ] as const;
