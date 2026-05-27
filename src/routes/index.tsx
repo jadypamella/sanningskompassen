@@ -168,21 +168,21 @@ function LandingPage() {
       {/* Why it works */}
       <section className="bg-paper border-y border-border">
         <div className="mx-auto max-w-6xl px-4 py-14">
-          <div className="text-xs uppercase tracking-[4px] text-gold font-semibold mb-2">Why it works</div>
+          <div className="text-xs uppercase tracking-[4px] text-gold font-semibold mb-2">Why It Works</div>
           <h2 className="font-display font-extrabold text-navy text-3xl md:text-4xl mb-8 max-w-2xl">
-            Every check shows you the verdict AND the trick. After 3 checks, you do not need us anymore.
+            Every Check Shows You The Verdict AND The Trick. After 3 Checks, You Do Not Need Us Anymore.
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="rounded-lg bg-background border border-border p-6">
               <Sparkles className="h-6 w-6 text-gold mb-3" />
-              <h3 className="font-display font-bold text-navy text-lg mb-2">Labelled in real claims</h3>
+              <h3 className="font-display font-bold text-navy text-lg mb-2">Tactics Labelled In Real Claims</h3>
               <p className="text-sm text-muted-foreground">
                 Paste anything. We highlight which of 5 manipulation tactics it used and how.
               </p>
             </div>
             <div className="rounded-lg bg-background border border-border p-6">
               <BookOpen className="h-6 w-6 text-gold mb-3" />
-              <h3 className="font-display font-bold text-navy text-lg mb-2">Cambridge inoculation research</h3>
+              <h3 className="font-display font-bold text-navy text-lg mb-2">Cambridge Inoculation Research</h3>
               <p className="text-sm text-muted-foreground">
                 Roozenbeek and van der Linden (2019, 2022) show that seeing the playbook builds lasting resistance.
               </p>
@@ -190,7 +190,7 @@ function LandingPage() {
             <div className="rounded-lg bg-navy text-paper p-6 relative overflow-hidden">
               <div className="absolute inset-0 bg-halftone-gold opacity-20" />
               <p className="font-display font-bold text-lg leading-snug relative">
-                This is passive inoculation. You build resistance by seeing the playbook labelled inside every check.
+                This Is Passive Inoculation. You Build Resistance By Seeing The Playbook Labelled Inside Every Check.
               </p>
             </div>
           </div>
