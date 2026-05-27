@@ -108,7 +108,7 @@ const EN: Dict = {
   "spot.badge.caught": "Caught By The Lie",
 
   // Workshop / Vaccine
-  "workshop.step0.kicker": "Step 0",
+  "workshop.step0.kicker": "Step 1",
   "workshop.step0.h": "Pick your topic.",
   "workshop.step0.p": "Choose what you will write your fake story about.",
   "workshop.step0.loading": "Loading topics...",
@@ -309,7 +309,7 @@ const SV: Dict = {
   "spot.badge.caught": "Lurad av lögnen",
 
   // Workshop
-  "workshop.step0.kicker": "Steg 0",
+  "workshop.step0.kicker": "Steg 1",
   "workshop.step0.h": "Välj ditt ämne.",
   "workshop.step0.p": "Välj vad du ska skriva din fejkberättelse om.",
   "workshop.step0.loading": "Laddar ämnen...",
