@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AppShell } from "@/components/AppShell";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -17,7 +17,6 @@ const TEAM = [
     name: "Jady Pamella",
     role: "AI Engineer",
     photo: "/team/jady.png",
-    email: "jadypbs@gmail.com",
     linkedin: "https://linkedin.com/in/jadypamella",
     github: "https://github.com/jadypamella",
   },
@@ -25,7 +24,6 @@ const TEAM = [
     name: "Hossam Elshahaby",
     role: "SW Engineer",
     photo: "/team/hossam.png",
-    email: "hossam.a.elshahaby@gmail.com",
     linkedin: "https://linkedin.com/in/helshahaby",
     github: null,
   },
@@ -33,7 +31,6 @@ const TEAM = [
     name: "Li Walter de Perlét",
     role: "Public Sector Consultant",
     photo: "/team/li.png",
-    email: "li@wdp.se",
     linkedin: "https://linkedin.com/in/li-walter-de-perlét-b31294200/",
     github: null,
   },
@@ -41,7 +38,6 @@ const TEAM = [
     name: "Jakub Piniaha",
     role: "Student",
     photo: "/team/jakub.png",
-    email: "piniahajakub@gmail.com",
     linkedin: "https://linkedin.com/in/jakub-piniaha-86a6a3295",
     github: "https://github.com/jadypamella/sanningskompassen.git",
   },
@@ -49,7 +45,6 @@ const TEAM = [
     name: "Agnes Cohen",
     role: "Risk Analysis Consultant, PwC",
     photo: "/team/agnes.png",
-    email: "agnes.cohen@telia.com",
     linkedin: "https://linkedin.com/in/agnes-cohen-b63816300/",
     github: null,
   },
@@ -86,12 +81,6 @@ function AboutPage() {
               </div>
               <h3 className="font-display font-extrabold text-navy text-lg">{m.name}</h3>
               <div className="text-[10px] uppercase tracking-[1.5px] text-gold font-semibold mt-1">{m.role}</div>
-              <div className="mt-3 flex items-center justify-center gap-2 text-xs text-muted-foreground">
-                <Mail className="h-4 w-4 shrink-0" />
-                <a href={`mailto:${m.email}`} className="hover:text-gold truncate">
-                  {m.email}
-                </a>
-              </div>
               <div className="mt-3 flex items-center justify-center gap-3">
                 <a
                   href={m.linkedin}
