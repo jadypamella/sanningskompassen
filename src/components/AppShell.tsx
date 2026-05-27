@@ -69,9 +69,6 @@ export function Header() {
           </nav>
         </div>
       )}
-          </nav>
-        </div>
-      )}
     </header>
   );
 }
