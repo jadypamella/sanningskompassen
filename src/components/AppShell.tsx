@@ -1,9 +1,10 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Menu, X, Zap, Target, Hammer, BookOpen, Users, Mail, Github, ExternalLink, Compass, Vote } from "lucide-react";
+import { Menu, X, Zap, Target, Hammer, BookOpen, Users, Github, ExternalLink, Compass, Vote } from "lucide-react";
 import { CompassMark } from "./CompassMark";
 
 const NAV_LINKS = [
+  { to: "/", label: "Quick Scan", badge: "LVL 0" },
   { to: "/spot", label: "Swipe Arena", badge: "LVL 1" },
   { to: "/workshop", label: "Vaccine", badge: "LVL 2" },
   { to: "/research", label: "Research", badge: null },
