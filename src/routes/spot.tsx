@@ -144,35 +144,13 @@ function SpotRound({
         ))}
       </div>
 
-      <div
-        key={card.id + (revealed ? "-back" : "-front")}
-        className="relative rounded-2xl border border-border bg-background shadow-lg min-h-[340px] p-6 md:p-8 flex flex-col animate-in fade-in zoom-in-95 duration-300"
-      >
-        {!revealed ? (
-          <>
-            <div className="text-[10px] uppercase tracking-[3px] text-muted-foreground font-semibold mb-3">
-              Card {index + 1} of {total}
-            </div>
-            <p className="font-display font-bold text-navy text-xl md:text-2xl flex-1 leading-snug">
-              {card.claim}
-            </p>
-            <div className="mt-6 grid grid-cols-2 gap-3">
-              <button
-                type="button"
-                onClick={() => onAnswer("FALSE")}
-                className="flex items-center justify-center gap-2 rounded-lg border-2 border-lie text-lie py-4 font-semibold hover:bg-lie hover:text-paper transition"
-              >
-                <X className="h-5 w-5" /> Fake
-              </button>
-              <button
-                type="button"
-                onClick={() => onAnswer("TRUE")}
-                className="flex items-center justify-center gap-2 rounded-lg bg-gold text-navy py-4 font-semibold hover:brightness-95 transition"
-              >
-                <Check className="h-5 w-5" /> Fact
-              </button>
-            </div>
-          </>
+      {!revealed ? (
+        <SwipeCard card={card} index={index} total={total} onAnswer={onAnswer} />
+      ) : (
+        <div
+          key={card.id + "-back"}
+          className="relative rounded-2xl border border-border bg-background shadow-lg min-h-[340px] p-6 md:p-8 flex flex-col animate-in fade-in zoom-in-95 duration-300"
+        >
         ) : (
           <>
             <div className="flex items-center justify-between mb-4">
