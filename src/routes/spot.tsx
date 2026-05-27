@@ -162,7 +162,8 @@ function SpotRound({
               }`}
             >
               {card.truth === "TRUE" ? <Check className="h-4 w-4" /> : <X className="h-4 w-4" />}
-              {t(`result.verdict.${card.truth}`)}
+              {card.truth === "TRUE" ? t("spot.swipe.fact") : t("spot.swipe.fake")}
+
             </div>
             <div
               className={`text-xs font-semibold uppercase tracking-[2px] ${
