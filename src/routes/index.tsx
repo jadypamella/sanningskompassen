@@ -145,7 +145,7 @@ function LandingPage() {
             {examples.length > 0 && (
               <div className="mt-5 pt-4 border-t border-border">
                 <div className="text-[10px] uppercase tracking-[2px] text-muted-foreground font-semibold mb-2">
-                  Try one of these
+                  Starter Quests · Tap To Load
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {examples.map((ex: { slug: string; label: string; claim_text: string; demo_default: boolean }) => (
