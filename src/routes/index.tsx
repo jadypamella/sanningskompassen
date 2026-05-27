@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { AppShell } from "@/components/AppShell";
 import { CompassMark } from "@/components/CompassMark";
-import { ArrowRight, BookOpen, Sparkles, Loader2, Hand } from "lucide-react";
+import { ArrowRight, BookOpen, Sparkles, Loader2, Hand, Zap, Target, Flame } from "lucide-react";
 import { analyzeClaim, listExampleClaims } from "@/lib/analyze.functions";
 import { getSessionId } from "@/lib/session";
 
