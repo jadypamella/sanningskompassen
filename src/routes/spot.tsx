@@ -271,12 +271,12 @@ function SwipeCard({
 function SpotResults({ answers, onRestart }: { answers: Answer[]; onRestart: () => void }) {
   const score = answers.filter((a) => a.correct).length;
   const total = answers.length;
-  const skill = useMemo(() => {
-    if (score >= 9) return { label: "Truth Hunter", emoji: "🏆", xp: 100 };
-    if (score >= 7) return { label: "Sharp Eye", emoji: "🎯", xp: 75 };
-    if (score >= 5) return { label: "Rising Recruit", emoji: "⚡", xp: 50 };
-    if (score >= 2) return { label: "Apprentice", emoji: "🌱", xp: 25 };
-    return { label: "Caught By The Lie", emoji: "💀", xp: 10 };
+  const skill = useMemo<{ label: string; Icon: LucideIcon; xp: number }>(() => {
+    if (score >= 9) return { label: "Truth Hunter", Icon: Trophy, xp: 100 };
+    if (score >= 7) return { label: "Sharp Eye", Icon: Target, xp: 75 };
+    if (score >= 5) return { label: "Rising Recruit", Icon: Zap, xp: 50 };
+    if (score >= 2) return { label: "Apprentice", Icon: Sprout, xp: 25 };
+    return { label: "Caught By The Lie", Icon: Skull, xp: 10 };
   }, [score]);
 
   const tacticStats = useMemo(() => {
