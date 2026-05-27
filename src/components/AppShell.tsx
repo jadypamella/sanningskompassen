@@ -171,14 +171,6 @@ export function Footer() {
             <ul className="space-y-3 text-sm">
               <li>
                 <a
-                  href="mailto:hello@sanningskompassen.se"
-                  className="inline-flex items-center gap-2 text-paper/80 hover:text-gold transition"
-                >
-                  <Mail className="h-4 w-4 text-gold" /><span>hello@sanningskompassen.se</span>
-                </a>
-              </li>
-              <li>
-                <a
                   href="https://github.com/Jakubs-Hackathons"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -220,10 +212,6 @@ export function Footer() {
         <div className="mt-8 pt-6 border-t border-paper/10 flex flex-col md:flex-row gap-3 md:items-center md:justify-between text-xs text-paper/60">
           <p>
             © 2026 Sanningskompassen. Built at Järvaveckan Hackathon on Lovable.
-          </p>
-          <p>
-            Tactic taxonomy adapted from Bad News (DROG &amp; Cambridge). Inoculation logic based on Roozenbeek &amp; van
-            der Linden, 2019 &amp; 2022.
           </p>
         </div>
       </div>
