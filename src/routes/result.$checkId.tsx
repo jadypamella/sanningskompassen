@@ -40,7 +40,7 @@ function ResultPage() {
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["check", checkId],
-    queryFn: () => fetchCheck({ data: { checkId } }) as Promise<{ check: CheckRow; checksToday: number }>,
+    queryFn: () => fetchCheck({ data: { checkId } }) as unknown as Promise<{ check: CheckRow; checksToday: number }>,
     retry: false,
   });
 
