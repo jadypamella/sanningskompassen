@@ -36,6 +36,7 @@ function ResultPage() {
   const { checkId } = Route.useParams();
   const navigate = useNavigate();
   const fetchCheck = useServerFn(getCheck);
+  const { t } = useT();
 
   const [data, setData] = useState<{ check: CheckRow; checksToday: number } | null>(null);
   const [err, setErr] = useState<string | null>(null);
@@ -56,14 +57,14 @@ function ResultPage() {
       .catch((e) => {
         console.error(e);
         if (!cancelled) {
-          setErr("That check was not found.");
+          setErr(t("result.notFound"));
           setTimeout(() => navigate({ to: "/" }), 1500);
         }
       });
     return () => {
       cancelled = true;
     };
-  }, [checkId, fetchCheck, navigate]);
+  }, [checkId, fetchCheck, navigate, t]);
 
   if (err) {
     return (
