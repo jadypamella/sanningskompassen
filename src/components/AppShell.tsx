@@ -171,7 +171,7 @@ export function Footer() {
             <ul className="space-y-3 text-sm">
               <li>
                 <a
-                  href="https://github.com/Jakubs-Hackathons"
+                  href="https://github.com/jadypamella/sanningskompassen.git"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-paper/80 hover:text-gold transition"
