@@ -4,7 +4,7 @@ import { motion, useMotionValue, useTransform, type PanInfo } from "framer-motio
 import { AppShell } from "@/components/AppShell";
 import { ClosingCTA } from "@/components/ClosingCTA";
 import { SPOT_DECK, TACTIC_LABELS, type SpotCard } from "@/lib/tactics";
-import { Check, X, RotateCcw, ArrowRight } from "lucide-react";
+import { Check, X, RotateCcw, ArrowRight, Target, Trophy, Zap, Sprout, Skull, type LucideIcon } from "lucide-react";
 
 export const Route = createFileRoute("/spot")({
   head: () => ({
@@ -94,7 +94,7 @@ function SpotIntro({ onStart }: { onStart: () => void }) {
   return (
     <div className="text-center space-y-6">
       <div className="inline-flex items-center gap-2 rounded-full bg-gold/15 px-3 py-1 text-[10px] uppercase tracking-[3px] text-gold font-bold">
-        🎯 Arena Mode · Lvl 1 · +50 XP
+        <Target className="h-3 w-3" /> Arena Mode · Lvl 1 · +50 XP
       </div>
       <h1 className="font-display font-extrabold text-navy text-4xl md:text-5xl">
         Swipe Arena: 10 Cards. Fact Or Fake.
@@ -271,12 +271,12 @@ function SwipeCard({
 function SpotResults({ answers, onRestart }: { answers: Answer[]; onRestart: () => void }) {
   const score = answers.filter((a) => a.correct).length;
   const total = answers.length;
-  const skill = useMemo(() => {
-    if (score >= 9) return { label: "Truth Hunter", emoji: "🏆", xp: 100 };
-    if (score >= 7) return { label: "Sharp Eye", emoji: "🎯", xp: 75 };
-    if (score >= 5) return { label: "Rising Recruit", emoji: "⚡", xp: 50 };
-    if (score >= 2) return { label: "Apprentice", emoji: "🌱", xp: 25 };
-    return { label: "Caught By The Lie", emoji: "💀", xp: 10 };
+  const skill = useMemo<{ label: string; Icon: LucideIcon; xp: number }>(() => {
+    if (score >= 9) return { label: "Truth Hunter", Icon: Trophy, xp: 100 };
+    if (score >= 7) return { label: "Sharp Eye", Icon: Target, xp: 75 };
+    if (score >= 5) return { label: "Rising Recruit", Icon: Zap, xp: 50 };
+    if (score >= 2) return { label: "Apprentice", Icon: Sprout, xp: 25 };
+    return { label: "Caught By The Lie", Icon: Skull, xp: 10 };
   }, [score]);
 
   const tacticStats = useMemo(() => {
@@ -301,7 +301,7 @@ function SpotResults({ answers, onRestart }: { answers: Answer[]; onRestart: () 
           <span className="text-muted-foreground"> / {total}</span>
         </div>
         <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-navy text-paper px-5 py-2 font-display font-bold">
-          <span className="text-xl">{skill.emoji}</span> {skill.label}
+          <skill.Icon className="h-5 w-5 text-gold" /> {skill.label}
         </div>
         <div className="mt-2 text-xs uppercase tracking-[3px] text-gold font-bold">+{skill.xp} XP Earned</div>
       </div>

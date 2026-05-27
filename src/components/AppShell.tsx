@@ -1,9 +1,10 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Menu, X, Zap, Target, Hammer, BookOpen, Users, Mail, Github, ExternalLink, Compass, Vote } from "lucide-react";
+import { Menu, X, Zap, Target, Hammer, BookOpen, Users, Github, ExternalLink, Compass, Vote } from "lucide-react";
 import { CompassMark } from "./CompassMark";
 
 const NAV_LINKS = [
+  { to: "/", label: "Quick Scan", badge: "LVL 0" },
   { to: "/spot", label: "Swipe Arena", badge: "LVL 1" },
   { to: "/workshop", label: "Vaccine", badge: "LVL 2" },
   { to: "/research", label: "Research", badge: null },
@@ -36,12 +37,6 @@ export function Header() {
           ))}
         </nav>
 
-        <Link
-          to="/"
-          className="hidden md:inline-flex items-center rounded-md bg-navy px-4 py-2 text-sm font-semibold text-paper hover:bg-navy/90 transition-colors"
-        >
-          Quick Scan
-        </Link>
 
         <button
           type="button"
@@ -71,13 +66,6 @@ export function Header() {
                 )}
               </Link>
             ))}
-            <Link
-              to="/"
-              onClick={() => setOpen(false)}
-              className="mt-2 inline-flex justify-center rounded-md bg-navy px-4 py-3 text-sm font-semibold text-paper"
-            >
-              Quick Scan
-            </Link>
           </nav>
         </div>
       )}
@@ -105,8 +93,12 @@ export function Footer() {
               The vaccine against political disinformation. Paste any claim, see the trick behind it, and
               train your eye to spot the next lie on your own. Built for young voters in Järva.
             </p>
-            <div className="inline-flex items-center gap-2 rounded-full bg-gold/15 px-3 py-1.5 text-[10px] uppercase tracking-[2px] text-gold font-bold">
-              <Compass className="h-3 w-3" /> Team 4 · Järvaveckan · 2026 · Challenge 2
+            <div className="flex flex-wrap items-center gap-1.5 text-[10px] uppercase tracking-[2px] font-bold">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-gold text-navy px-2.5 py-1">
+                <Compass className="h-3 w-3" /> Team 4
+              </span>
+              <span className="rounded-full bg-gold/15 text-gold px-2.5 py-1">Järvaveckan 2026</span>
+              <span className="rounded-full bg-gold/15 text-gold px-2.5 py-1">Challenge 2</span>
             </div>
           </div>
 

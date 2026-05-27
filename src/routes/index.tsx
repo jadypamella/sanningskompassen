@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { AppShell } from "@/components/AppShell";
 import { CompassMark } from "@/components/CompassMark";
-import { ArrowRight, BookOpen, Sparkles, Loader2, Hand } from "lucide-react";
+import { ArrowRight, BookOpen, Sparkles, Loader2, Hand, Zap, Target, Flame } from "lucide-react";
 import { analyzeClaim, listExampleClaims } from "@/lib/analyze.functions";
 import { getSessionId } from "@/lib/session";
 
@@ -206,7 +206,7 @@ function LandingPage() {
         <div className="grid md:grid-cols-3 gap-4 mt-8 text-left">
           <Link to="/" className="group rounded-lg border border-border bg-background p-5 hover:border-gold hover:-translate-y-0.5 transition">
             <div className="flex items-center justify-between">
-              <div className="text-[10px] uppercase tracking-[2px] text-gold font-semibold">⚡ Quick Mode</div>
+              <div className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[2px] text-gold font-semibold"><Zap className="h-3 w-3" /> Quick Mode</div>
               <span className="rounded-sm bg-gold/15 text-gold text-[9px] font-bold tracking-wider px-1.5 py-0.5">LVL 0 · +5 XP</span>
             </div>
             <div className="font-display font-bold text-navy mt-2 text-lg">Quick Scan</div>
@@ -215,7 +215,7 @@ function LandingPage() {
           </Link>
           <Link to="/spot" className="group rounded-lg border border-border bg-background p-5 hover:border-gold hover:-translate-y-0.5 transition">
             <div className="flex items-center justify-between">
-              <div className="text-[10px] uppercase tracking-[2px] text-gold font-semibold">🎯 Arena Mode</div>
+              <div className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[2px] text-gold font-semibold"><Target className="h-3 w-3" /> Arena Mode</div>
               <span className="rounded-sm bg-gold/15 text-gold text-[9px] font-bold tracking-wider px-1.5 py-0.5">LVL 1 · +50 XP</span>
             </div>
             <div className="font-display font-bold text-navy mt-2 text-lg">Swipe Arena</div>
@@ -225,7 +225,7 @@ function LandingPage() {
           <Link to="/workshop" className="group rounded-lg border border-navy bg-navy text-paper p-5 hover:brightness-110 hover:-translate-y-0.5 transition relative overflow-hidden">
             <div className="absolute inset-0 bg-halftone-gold opacity-10 pointer-events-none" />
             <div className="relative flex items-center justify-between">
-              <div className="text-[10px] uppercase tracking-[2px] text-gold font-semibold">🔥 Boss Mode</div>
+              <div className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[2px] text-gold font-semibold"><Flame className="h-3 w-3" /> Boss Mode</div>
               <span className="rounded-sm bg-gold text-navy text-[9px] font-bold tracking-wider px-1.5 py-0.5">LVL 2 · +200 XP</span>
             </div>
             <div className="font-display font-bold mt-2 text-lg relative">Vaccine</div>
