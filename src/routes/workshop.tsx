@@ -172,9 +172,29 @@ function WorkshopPage() {
         )}
 
         <div className="rounded-xl border border-border bg-background p-6 md:p-8">
+          <div className="mb-5 flex items-start justify-between gap-3 rounded-lg border border-gold/30 bg-gold/5 px-4 py-3">
+            <div>
+              <div className="text-[10px] uppercase tracking-[2px] text-gold font-semibold">{t("workshop.topicLabel")}</div>
+              <div className="font-display font-bold text-navy text-sm md:text-base">
+                {topics?.find((tp) => tp.id === topicId)?.title ?? "—"}
+              </div>
+            </div>
+            <button
+              onClick={() => {
+                setTopicId(null);
+                setStep(0);
+                setAnswers(EMPTY);
+                setError(null);
+              }}
+              className="text-xs font-semibold text-navy underline-offset-4 hover:underline shrink-0"
+            >
+              {t("workshop.changeTopic")}
+            </button>
+          </div>
           <div className="text-xs uppercase tracking-[4px] text-gold font-semibold mb-2">
             {t("workshop.tacticOf", { step: step + 1 })}
           </div>
+
           <div className="flex items-center gap-3 mb-4">
             <tactic.icon className="h-6 w-6 text-navy" />
             <h1 className="font-display font-extrabold text-navy text-2xl md:text-3xl">{tactic.name}</h1>
