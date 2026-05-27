@@ -295,19 +295,20 @@ function SpotResults({ answers, onRestart }: { answers: Answer[]; onRestart: () 
   return (
     <div className="space-y-8">
       <div className="text-center">
-        <div className="text-xs uppercase tracking-[4px] text-gold font-semibold mb-2">Your score</div>
+        <div className="text-xs uppercase tracking-[4px] text-gold font-semibold mb-2">Your Score</div>
         <div className="font-display font-extrabold text-navy text-7xl md:text-8xl tabular-nums">
           {score}
           <span className="text-muted-foreground"> / {total}</span>
         </div>
-        <div className="mt-3 inline-block rounded-full bg-navy text-paper px-5 py-2 font-display font-bold">
-          {skill}
+        <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-navy text-paper px-5 py-2 font-display font-bold">
+          <span className="text-xl">{skill.emoji}</span> {skill.label}
         </div>
+        <div className="mt-2 text-xs uppercase tracking-[3px] text-gold font-bold">+{skill.xp} XP Earned</div>
       </div>
 
       {tacticStats.length > 0 && (
         <div className="rounded-xl border border-border bg-background p-5">
-          <h3 className="font-display font-bold text-navy mb-3">Tactic breakdown</h3>
+          <h3 className="font-display font-bold text-navy mb-3">Tactic Breakdown</h3>
           <ul className="text-sm text-navy space-y-2">
             {tacticStats.map(([id, s]) => (
               <li key={id} className="flex justify-between gap-4">
