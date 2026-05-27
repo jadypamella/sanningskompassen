@@ -61,9 +61,14 @@ export function Header() {
                 key={l.to}
                 to={l.to}
                 onClick={() => setOpen(false)}
-                className="px-3 py-3 rounded-md text-navy font-medium hover:bg-navy/5"
+                className="px-3 py-3 rounded-md text-navy font-medium hover:bg-navy/5 flex items-center justify-between"
               >
-                {l.label}
+                <span>{l.label}</span>
+                {l.badge && (
+                  <span className="rounded-sm bg-gold/20 text-gold text-[9px] font-bold tracking-wider px-1.5 py-0.5">
+                    {l.badge}
+                  </span>
+                )}
               </Link>
             ))}
             <Link
@@ -71,7 +76,7 @@ export function Header() {
               onClick={() => setOpen(false)}
               className="mt-2 inline-flex justify-center rounded-md bg-navy px-4 py-3 text-sm font-semibold text-paper"
             >
-              Check a claim
+              Quick Scan
             </Link>
           </nav>
         </div>
