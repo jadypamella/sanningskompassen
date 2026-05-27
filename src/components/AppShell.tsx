@@ -114,16 +114,16 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/spot" className="inline-flex items-center gap-2 text-paper/80 hover:text-gold transition">
-                  <Target className="h-4 w-4 text-gold" />
-                  <span>Swipe Arena</span>
+                <Link to="/workshop" className="inline-flex items-center gap-2 text-paper/80 hover:text-gold transition">
+                  <Hammer className="h-4 w-4 text-gold" />
+                  <span>Vaccine</span>
                   <span className="rounded-sm bg-gold/15 text-gold text-[9px] font-bold px-1.5 py-0.5">LVL 1</span>
                 </Link>
               </li>
               <li>
-                <Link to="/workshop" className="inline-flex items-center gap-2 text-paper/80 hover:text-gold transition">
-                  <Hammer className="h-4 w-4 text-gold" />
-                  <span>Vaccine</span>
+                <Link to="/spot" className="inline-flex items-center gap-2 text-paper/80 hover:text-gold transition">
+                  <Target className="h-4 w-4 text-gold" />
+                  <span>Swipe Arena</span>
                   <span className="rounded-sm bg-gold/15 text-gold text-[9px] font-bold px-1.5 py-0.5">LVL 2</span>
                 </Link>
               </li>
