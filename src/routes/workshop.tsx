@@ -7,6 +7,7 @@ import { TACTICS, type TacticId } from "@/lib/tactics";
 import { listTopics } from "@/lib/topics.functions";
 import { scoreSubmission } from "@/lib/score.functions";
 import { ArrowLeft, ArrowRight, CheckCircle2, Loader2, Sparkles } from "lucide-react";
+import { useT } from "@/lib/i18n";
 
 export const Route = createFileRoute("/workshop")({
   head: () => ({
@@ -30,17 +31,18 @@ const EMPTY: Answers = {
   us_vs_them: "",
 };
 
-const LOADING_LINES = [
-  "Analysing your tactics...",
-  "Mixing the antidote...",
-  "Spotting your tricks...",
-  "Reading between your lines...",
-];
-
 function WorkshopPage() {
   const navigate = useNavigate();
   const fetchTopics = useServerFn(listTopics);
   const submit = useServerFn(scoreSubmission);
+  const { t } = useT();
+
+  const LOADING_LINES = [
+    t("workshop.loading.0"),
+    t("workshop.loading.1"),
+    t("workshop.loading.2"),
+    t("workshop.loading.3"),
+  ];
 
   const { data: topics, isLoading: topicsLoading, error: topicsError } =
     useQuery({ queryKey: ["topics"], queryFn: () => fetchTopics() });
@@ -54,8 +56,8 @@ function WorkshopPage() {
 
   useEffect(() => {
     if (!submitting) return;
-    const t = setInterval(() => setLoadingLine((i) => (i + 1) % LOADING_LINES.length), 1500);
-    return () => clearInterval(t);
+    const id = setInterval(() => setLoadingLine((i) => (i + 1) % 4), 1500);
+    return () => clearInterval(id);
   }, [submitting]);
 
   const tactic = TACTICS[step];
@@ -71,7 +73,7 @@ function WorkshopPage() {
       navigate({ to: "/result/$runId", params: { runId } });
     } catch (e) {
       console.error(e);
-      setError("Something went wrong while analysing your story. Try again, or pick a different topic.");
+      setError(t("workshop.error"));
       setSubmitting(false);
     }
   }
@@ -81,37 +83,37 @@ function WorkshopPage() {
     return (
       <AppShell>
         <section className="mx-auto max-w-5xl px-4 py-12">
-          <div className="text-xs uppercase tracking-[4px] text-gold font-semibold mb-2">Step 0</div>
-          <h1 className="font-display font-extrabold text-navy text-4xl mb-2">Pick your topic.</h1>
-          <p className="text-muted-foreground mb-8">Choose what you will write your fake story about.</p>
+          <div className="text-xs uppercase tracking-[4px] text-gold font-semibold mb-2">{t("workshop.step0.kicker")}</div>
+          <h1 className="font-display font-extrabold text-navy text-4xl mb-2">{t("workshop.step0.h")}</h1>
+          <p className="text-muted-foreground mb-8">{t("workshop.step0.p")}</p>
 
-          {topicsLoading && <div className="text-muted-foreground">Loading topics...</div>}
+          {topicsLoading && <div className="text-muted-foreground">{t("workshop.step0.loading")}</div>}
           {topicsError && (
             <div className="rounded-md border border-border bg-background p-4 text-sm">
-              No topics available right now. Refresh the page.
+              {t("workshop.step0.empty")}
             </div>
           )}
 
           <div className="grid md:grid-cols-2 gap-4">
-            {topics?.map((t) => (
+            {topics?.map((tp) => (
               <button
-                key={t.id}
+                key={tp.id}
                 onClick={() => {
-                  setTopicId(t.id);
+                  setTopicId(tp.id);
                   setStep(0);
                   setAnswers(EMPTY);
                 }}
                 className="text-left rounded-lg border border-border bg-background p-6 hover:border-gold hover:shadow-md transition group"
               >
-                {t.demo_default && (
+                {tp.demo_default && (
                   <div className="inline-flex items-center gap-1 text-[10px] uppercase tracking-[2px] text-gold font-semibold mb-2">
-                    <Sparkles className="h-3 w-3" /> Recommended for first try
+                    <Sparkles className="h-3 w-3" /> {t("workshop.step0.recommended")}
                   </div>
                 )}
-                <h3 className="font-display font-extrabold text-navy text-xl mb-1">{t.title}</h3>
-                <p className="text-sm text-muted-foreground mb-3">{t.description}</p>
+                <h3 className="font-display font-extrabold text-navy text-xl mb-1">{tp.title}</h3>
+                <p className="text-sm text-muted-foreground mb-3">{tp.description}</p>
                 <span className="inline-flex items-center gap-1 text-sm font-semibold text-navy group-hover:text-gold">
-                  Start <ArrowRight className="h-4 w-4" />
+                  {t("workshop.step0.start")} <ArrowRight className="h-4 w-4" />
                 </span>
               </button>
             ))}
@@ -128,7 +130,7 @@ function WorkshopPage() {
         <section className="mx-auto max-w-2xl px-4 py-24 text-center">
           <Loader2 className="mx-auto h-10 w-10 text-gold animate-spin" />
           <p className="mt-6 font-display font-bold text-navy text-2xl">{LOADING_LINES[loadingLine]}</p>
-          <p className="mt-2 text-sm text-muted-foreground">Hold on, the antidote is forming.</p>
+          <p className="mt-2 text-sm text-muted-foreground">{t("workshop.submitting.tagline")}</p>
         </section>
       </AppShell>
     );
@@ -139,9 +141,9 @@ function WorkshopPage() {
       <section className="mx-auto max-w-3xl px-4 py-10">
         {/* Progress */}
         <div className="flex gap-2 mb-8">
-          {TACTICS.map((t, i) => (
+          {TACTICS.map((tt, i) => (
             <div
-              key={t.id}
+              key={tt.id}
               className={`h-1.5 flex-1 rounded-full transition-colors ${
                 i < step ? "bg-navy" : i === step ? "bg-gold" : "bg-border"
               }`}
@@ -154,7 +156,7 @@ function WorkshopPage() {
             <p className="font-semibold mb-2">{error}</p>
             <div className="flex gap-2">
               <button onClick={handleSubmit} className="rounded-md bg-navy px-3 py-1.5 text-paper text-sm font-medium">
-                Try again
+                {t("workshop.tryAgain")}
               </button>
               <button
                 onClick={() => {
@@ -163,7 +165,7 @@ function WorkshopPage() {
                 }}
                 className="rounded-md border border-border px-3 py-1.5 text-navy text-sm font-medium"
               >
-                Pick another topic
+                {t("workshop.pickAnother")}
               </button>
             </div>
           </div>
@@ -171,7 +173,7 @@ function WorkshopPage() {
 
         <div className="rounded-xl border border-border bg-background p-6 md:p-8">
           <div className="text-xs uppercase tracking-[4px] text-gold font-semibold mb-2">
-            Tactic {step + 1} of 5
+            {t("workshop.tacticOf", { step: step + 1 })}
           </div>
           <div className="flex items-center gap-3 mb-4">
             <tactic.icon className="h-6 w-6 text-navy" />
@@ -188,7 +190,7 @@ function WorkshopPage() {
             className="w-full rounded-md border border-border bg-paper p-3 text-navy focus:outline-none focus:ring-2 focus:ring-gold/50 resize-none"
           />
           <div className="mt-2 flex justify-between text-xs text-muted-foreground">
-            <span>{value.trim().length < 5 ? "Minimum 5 characters." : <>&nbsp;</>}</span>
+            <span>{value.trim().length < 5 ? t("workshop.minChars") : <>&nbsp;</>}</span>
             <span className="tabular-nums">{value.length} / 280</span>
           </div>
 
@@ -198,7 +200,7 @@ function WorkshopPage() {
               disabled={step === 0}
               className="inline-flex items-center gap-1 text-sm font-semibold text-muted-foreground disabled:opacity-40 hover:text-navy"
             >
-              <ArrowLeft className="h-4 w-4" /> Back
+              <ArrowLeft className="h-4 w-4" /> {t("workshop.back")}
             </button>
             {step < 4 ? (
               <button
@@ -206,7 +208,7 @@ function WorkshopPage() {
                 disabled={!valid}
                 className="inline-flex items-center gap-2 rounded-md bg-navy px-5 py-2.5 font-semibold text-paper disabled:opacity-40 hover:bg-navy/90"
               >
-                Next tactic <ArrowRight className="h-4 w-4" />
+                {t("workshop.next")} <ArrowRight className="h-4 w-4" />
               </button>
             ) : (
               <button
@@ -214,7 +216,7 @@ function WorkshopPage() {
                 disabled={!valid || !Object.values(answers).every((v) => v.trim().length >= 5)}
                 className="inline-flex items-center gap-2 rounded-md bg-gold px-5 py-2.5 font-semibold text-navy disabled:opacity-40 hover:brightness-95"
               >
-                Submit and see the X-ray <CheckCircle2 className="h-4 w-4" />
+                {t("workshop.submit")} <CheckCircle2 className="h-4 w-4" />
               </button>
             )}
           </div>

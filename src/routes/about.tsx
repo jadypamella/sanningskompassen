@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AppShell } from "@/components/AppShell";
 import { Github, Linkedin } from "lucide-react";
+import { useT } from "@/lib/i18n";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -51,18 +52,13 @@ const TEAM = [
 ];
 
 function AboutPage() {
+  const { t } = useT();
   return (
     <AppShell>
       <section className="mx-auto max-w-5xl px-4 py-12">
-        <div className="text-xs uppercase tracking-[4px] text-gold font-semibold mb-2">About</div>
-        <h1 className="font-display font-extrabold text-navy text-4xl md:text-5xl mb-4">
-          Built by five people who picked the harder direction.
-        </h1>
-        <p className="text-muted-foreground max-w-3xl">
-          We built Sanningskompassen at the Järvaveckan Hackathon on May 27, 2026, as Team 4 for Challenge 2, countering
-          disinformation. Instead of building yet another fact-checker, we built the vaccine. The mechanic is based on
-          inoculation research from Cambridge (Roozenbeek and van der Linden).
-        </p>
+        <div className="text-xs uppercase tracking-[4px] text-gold font-semibold mb-2">{t("about.kicker")}</div>
+        <h1 className="font-display font-extrabold text-navy text-4xl md:text-5xl mb-4">{t("about.h")}</h1>
+        <p className="text-muted-foreground max-w-3xl">{t("about.p")}</p>
 
         <div className="mt-10 flex flex-wrap justify-center gap-6">
           {TEAM.map((m) => (
@@ -108,8 +104,7 @@ function AboutPage() {
         </div>
 
         <div className="mt-12 rounded-lg bg-paper border border-border p-6 text-sm text-muted-foreground">
-          Built at Järvaveckan Hackathon 2026 as Team 4, on Lovable. Riso Resistance brand by the team. Tactic taxonomy adapted
-          from Bad News (DROG and Cambridge). Inoculation logic based on Roozenbeek and van der Linden, 2019 and 2022.
+          {t("about.note")}
         </div>
       </section>
     </AppShell>

@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AppShell } from "@/components/AppShell";
 import { ExternalLink } from "lucide-react";
+import { useT } from "@/lib/i18n";
 
 export const Route = createFileRoute("/research")({
   head: () => ({
@@ -55,24 +56,15 @@ const CITATIONS = [
 ];
 
 function ResearchPage() {
+  const { t } = useT();
   return (
     <AppShell>
       <section className="mx-auto max-w-3xl px-4 py-12">
-        <div className="text-xs uppercase tracking-[4px] text-gold font-semibold mb-2">Research</div>
-        <h1 className="font-display font-extrabold text-navy text-4xl md:text-5xl mb-6">
-          Why writing fakes makes you spot them.
-        </h1>
+        <div className="text-xs uppercase tracking-[4px] text-gold font-semibold mb-2">{t("research.kicker")}</div>
+        <h1 className="font-display font-extrabold text-navy text-4xl md:text-5xl mb-6">{t("research.h")}</h1>
         <div className="space-y-4 text-navy leading-relaxed">
-          <p>
-            Inoculation theory is the idea that exposure to a weakened version of a manipulation builds mental
-            antibodies against the real thing. The same way a vaccine works for the body, a guided practice with
-            the tactics of misinformation works for the brain.
-          </p>
-          <p>
-            Sanningskompassen turns that theory into a five-minute workshop. By writing fake political content with
-            your own hands, you internalise the shape of clickbait, false authority, displaced images, fear hooks,
-            and us-vs-them framing. Once you have built one, you cannot un-see it on your feed.
-          </p>
+          <p>{t("research.p1")}</p>
+          <p>{t("research.p2")}</p>
         </div>
 
         <div className="mt-10 space-y-4">
@@ -91,22 +83,17 @@ function ResearchPage() {
               </p>
               <p className="text-sm text-navy">{c.summary}</p>
               <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-gold">
-                Open source <ExternalLink className="h-3 w-3" />
+                {t("research.openSource")} <ExternalLink className="h-3 w-3" />
               </span>
             </a>
           ))}
         </div>
 
         <div className="mt-10 rounded-lg bg-paper border border-border p-5 text-sm text-muted-foreground">
-          The same logic powers anti-phishing training in cybersecurity. Sending employees a controlled fake phish
-          measurably improves their ability to spot real ones. Sanningskompassen applies that pattern to political
-          information.
+          {t("research.note")}
         </div>
 
-        <p className="mt-8 text-xs text-muted-foreground">
-          Sanningskompassen is built for the Järvaveckan Hackathon 2026. The tactic taxonomy is adapted from the Bad
-          News game (DROG and Cambridge).
-        </p>
+        <p className="mt-8 text-xs text-muted-foreground">{t("research.footer")}</p>
       </section>
     </AppShell>
   );
