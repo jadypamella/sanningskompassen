@@ -18,7 +18,7 @@ export function ClosingCTA({
         <h2 className="font-display font-extrabold text-2xl md:text-4xl leading-tight">{t("closing.h")}</h2>
         <div className="mt-6 flex flex-wrap gap-3">
           <a
-            href="https://www.val.se/"
+            href="https://val.se/"
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-2 rounded-md bg-gold px-6 py-3 font-semibold text-navy hover:brightness-95 transition"

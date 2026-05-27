@@ -165,7 +165,7 @@ const EN: Dict = {
   "run.badge.unlocked": "Badge unlocked",
   "run.cta.h": "You can now spot 5 manipulation tactics.",
   "run.cta.p": "Use them to navigate the next weeks of election news. Then vote.",
-  "run.cta.polling": "Find your polling station in Järva",
+  "run.cta.polling": "How to vote",
   "run.cta.another": "Try another topic",
   "run.readResearch": "Read the research behind this",
   "run.workshopsToday": "Workshops completed today:",
@@ -173,7 +173,7 @@ const EN: Dict = {
   // ClosingCTA
   "closing.h":
     "You can now spot 5 manipulation tactics. Use them to navigate the next weeks of election news. Then vote.",
-  "closing.polling": "Find your polling station in Järva",
+  "closing.polling": "How to vote",
   "closing.checkAnother": "Check another claim",
   "closing.runQuick": "Run A Quick Scan",
 
@@ -366,7 +366,7 @@ const SV: Dict = {
   "run.badge.unlocked": "Märke upplåst",
   "run.cta.h": "Du kan nu upptäcka 5 manipulationstaktiker.",
   "run.cta.p": "Använd dem för att navigera de kommande veckornas valnyheter. Sedan röstar du.",
-  "run.cta.polling": "Hitta din vallokal i Järva",
+  "run.cta.polling": "Så röstar du",
   "run.cta.another": "Prova ett annat ämne",
   "run.readResearch": "Läs forskningen bakom",
   "run.workshopsToday": "Verkstäder idag:",
@@ -374,7 +374,7 @@ const SV: Dict = {
   // ClosingCTA
   "closing.h":
     "Du kan nu upptäcka 5 manipulationstaktiker. Använd dem för att navigera de kommande veckornas valnyheter. Sedan röstar du.",
-  "closing.polling": "Hitta din vallokal i Järva",
+  "closing.polling": "Så röstar du",
   "closing.checkAnother": "Kolla ett annat påstående",
   "closing.runQuick": "Kör en snabbskanning",
 

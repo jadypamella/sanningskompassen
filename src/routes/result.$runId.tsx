@@ -172,7 +172,7 @@ function ResultPage() {
             <p className="mt-3 text-paper/85">{t("run.cta.p")}</p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a
-                href="https://www.val.se/"
+                href="https://val.se/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-md bg-gold px-5 py-3 font-semibold text-navy hover:brightness-95"
