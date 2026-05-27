@@ -93,20 +93,21 @@ function SpotPage() {
 function SpotIntro({ onStart }: { onStart: () => void }) {
   return (
     <div className="text-center space-y-6">
-      <div className="text-xs uppercase tracking-[4px] text-gold font-semibold">Spot the Fake</div>
+      <div className="inline-flex items-center gap-2 rounded-full bg-gold/15 px-3 py-1 text-[10px] uppercase tracking-[3px] text-gold font-bold">
+        🎯 Arena Mode · Lvl 1 · +50 XP
+      </div>
       <h1 className="font-display font-extrabold text-navy text-4xl md:text-5xl">
-        10 cards. Fact or fake.
+        Swipe Arena: 10 Cards. Fact Or Fake.
       </h1>
       <p className="text-muted-foreground max-w-md mx-auto">
-        Tap Fact or Fake on each card. See how sharp your eye is for political manipulation. Same 5 tactics
-        appear here as in the X-ray.
+        Swipe Right For Fact, Left For Fake. Score 8+ to unlock the <span className="font-bold text-navy">Sharp Eye</span> badge.
       </p>
       <button
         type="button"
         onClick={onStart}
         className="inline-flex items-center gap-2 rounded-md bg-gold px-8 py-3 font-semibold text-navy hover:brightness-95 transition"
       >
-        Start <ArrowRight className="h-4 w-4" />
+        Enter The Arena <ArrowRight className="h-4 w-4" />
       </button>
     </div>
   );
