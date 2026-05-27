@@ -374,7 +374,7 @@ const SV: Dict = {
   // ClosingCTA
   "closing.h":
     "Du kan nu upptäcka 5 manipulationstaktiker. Använd dem för att navigera de kommande veckornas valnyheter. Sedan röstar du.",
-  "closing.polling": "Hitta din vallokal i Järva",
+  "closing.polling": "Så röstar du",
   "closing.checkAnother": "Kolla ett annat påstående",
   "closing.runQuick": "Kör en snabbskanning",
 
