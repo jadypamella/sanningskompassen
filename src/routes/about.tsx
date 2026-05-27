@@ -81,12 +81,6 @@ function AboutPage() {
               </div>
               <h3 className="font-display font-extrabold text-navy text-lg">{m.name}</h3>
               <div className="text-[10px] uppercase tracking-[1.5px] text-gold font-semibold mt-1">{m.role}</div>
-              <div className="mt-3 flex items-center justify-center gap-2 text-xs text-muted-foreground">
-                <Mail className="h-4 w-4 shrink-0" />
-                <a href={`mailto:${m.email}`} className="hover:text-gold truncate">
-                  {m.email}
-                </a>
-              </div>
               <div className="mt-3 flex items-center justify-center gap-3">
                 <a
                   href={m.linkedin}
