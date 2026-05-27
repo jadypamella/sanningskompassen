@@ -1,29 +1,76 @@
 import { Link } from "@tanstack/react-router";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
 import { CompassMark } from "./CompassMark";
 
+const NAV_LINKS = [
+  { to: "/spot", label: "Spot game" },
+  { to: "/workshop", label: "Workshop" },
+  { to: "/research", label: "Research" },
+  { to: "/about", label: "About" },
+] as const;
+
 export function Header() {
+  const [open, setOpen] = useState(false);
   return (
-    <header className="border-b border-border bg-paper">
+    <header className="border-b border-border bg-paper sticky top-0 z-40">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-        <Link to="/" className="flex items-center gap-3 group">
+        <Link to="/" className="flex items-center gap-3 group" onClick={() => setOpen(false)}>
           <CompassMark size={42} />
           <div className="leading-tight">
             <div className="font-display font-extrabold text-navy text-lg">Sanningskompassen</div>
             <div className="text-[10px] uppercase tracking-[3px] text-muted-foreground">The Truth Compass</div>
           </div>
         </Link>
+
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-navy">
-          <Link to="/workshop" className="hover:text-gold transition-colors">Workshop</Link>
-          <Link to="/research" className="hover:text-gold transition-colors">Research</Link>
-          <Link to="/about" className="hover:text-gold transition-colors">About</Link>
+          {NAV_LINKS.map((l) => (
+            <Link key={l.to} to={l.to} className="hover:text-gold transition-colors">
+              {l.label}
+            </Link>
+          ))}
         </nav>
+
         <Link
-          to="/workshop"
-          className="md:inline-flex hidden items-center rounded-md bg-navy px-4 py-2 text-sm font-semibold text-paper hover:bg-navy/90 transition-colors"
+          to="/"
+          className="hidden md:inline-flex items-center rounded-md bg-navy px-4 py-2 text-sm font-semibold text-paper hover:bg-navy/90 transition-colors"
         >
-          Start the workshop
+          Check a claim
         </Link>
+
+        <button
+          type="button"
+          aria-label={open ? "Close menu" : "Open menu"}
+          className="md:hidden inline-flex items-center justify-center rounded-md border border-border p-2 text-navy"
+          onClick={() => setOpen((v) => !v)}
+        >
+          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
       </div>
+
+      {open && (
+        <div className="md:hidden border-t border-border bg-paper">
+          <nav className="mx-auto max-w-6xl px-4 py-3 flex flex-col gap-1">
+            {NAV_LINKS.map((l) => (
+              <Link
+                key={l.to}
+                to={l.to}
+                onClick={() => setOpen(false)}
+                className="px-3 py-3 rounded-md text-navy font-medium hover:bg-navy/5"
+              >
+                {l.label}
+              </Link>
+            ))}
+            <Link
+              to="/"
+              onClick={() => setOpen(false)}
+              className="mt-2 inline-flex justify-center rounded-md bg-navy px-4 py-3 text-sm font-semibold text-paper"
+            >
+              Check a claim
+            </Link>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
@@ -37,7 +84,11 @@ export function Footer() {
           2019 and 2022.
         </p>
         <p className="text-xs">
-          Built at Järvaveckan Hackathon 2026 on Lovable. <Link to="/research" className="underline decoration-gold underline-offset-4">See the research</Link>.
+          Built at Järvaveckan Hackathon 2026 on Lovable.{" "}
+          <Link to="/research" className="underline decoration-gold underline-offset-4">
+            See the research
+          </Link>
+          .
         </p>
       </div>
     </footer>

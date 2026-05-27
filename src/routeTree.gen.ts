@@ -10,14 +10,21 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WorkshopRouteImport } from './routes/workshop'
+import { Route as SpotRouteImport } from './routes/spot'
 import { Route as ResearchRouteImport } from './routes/research'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ResultRunIdRouteImport } from './routes/result.$runId'
+import { Route as ResultCheckIdRouteImport } from './routes/result.$checkId'
 
 const WorkshopRoute = WorkshopRouteImport.update({
   id: '/workshop',
   path: '/workshop',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SpotRoute = SpotRouteImport.update({
+  id: '/spot',
+  path: '/spot',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ResearchRoute = ResearchRouteImport.update({
@@ -40,19 +47,28 @@ const ResultRunIdRoute = ResultRunIdRouteImport.update({
   path: '/result/$runId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResultCheckIdRoute = ResultCheckIdRouteImport.update({
+  id: '/result/$checkId',
+  path: '/result/$checkId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/research': typeof ResearchRoute
+  '/spot': typeof SpotRoute
   '/workshop': typeof WorkshopRoute
+  '/result/$checkId': typeof ResultCheckIdRoute
   '/result/$runId': typeof ResultRunIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/research': typeof ResearchRoute
+  '/spot': typeof SpotRoute
   '/workshop': typeof WorkshopRoute
+  '/result/$checkId': typeof ResultCheckIdRoute
   '/result/$runId': typeof ResultRunIdRoute
 }
 export interface FileRoutesById {
@@ -60,22 +76,48 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/research': typeof ResearchRoute
+  '/spot': typeof SpotRoute
   '/workshop': typeof WorkshopRoute
+  '/result/$checkId': typeof ResultCheckIdRoute
   '/result/$runId': typeof ResultRunIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/research' | '/workshop' | '/result/$runId'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/research'
+    | '/spot'
+    | '/workshop'
+    | '/result/$checkId'
+    | '/result/$runId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/research' | '/workshop' | '/result/$runId'
-  id: '__root__' | '/' | '/about' | '/research' | '/workshop' | '/result/$runId'
+  to:
+    | '/'
+    | '/about'
+    | '/research'
+    | '/spot'
+    | '/workshop'
+    | '/result/$checkId'
+    | '/result/$runId'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/research'
+    | '/spot'
+    | '/workshop'
+    | '/result/$checkId'
+    | '/result/$runId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ResearchRoute: typeof ResearchRoute
+  SpotRoute: typeof SpotRoute
   WorkshopRoute: typeof WorkshopRoute
+  ResultCheckIdRoute: typeof ResultCheckIdRoute
   ResultRunIdRoute: typeof ResultRunIdRoute
 }
 
@@ -86,6 +128,13 @@ declare module '@tanstack/react-router' {
       path: '/workshop'
       fullPath: '/workshop'
       preLoaderRoute: typeof WorkshopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/spot': {
+      id: '/spot'
+      path: '/spot'
+      fullPath: '/spot'
+      preLoaderRoute: typeof SpotRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/research': {
@@ -116,6 +165,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResultRunIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/result/$checkId': {
+      id: '/result/$checkId'
+      path: '/result/$checkId'
+      fullPath: '/result/$checkId'
+      preLoaderRoute: typeof ResultCheckIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -123,7 +179,9 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ResearchRoute: ResearchRoute,
+  SpotRoute: SpotRoute,
   WorkshopRoute: WorkshopRoute,
+  ResultCheckIdRoute: ResultCheckIdRoute,
   ResultRunIdRoute: ResultRunIdRoute,
 }
 export const routeTree = rootRouteImport
