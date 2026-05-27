@@ -216,8 +216,16 @@ function WorkshopPage() {
 
           <div className="mt-6 flex items-center justify-between">
             <button
-              onClick={() => setStep((s) => Math.max(0, s - 1))}
-              disabled={step === 0}
+              onClick={() => {
+                if (step === 0) {
+                  setTopicId(null);
+                  setAnswers(EMPTY);
+                  setError(null);
+                } else {
+                  setStep((s) => s - 1);
+                }
+              }}
+
               className="inline-flex items-center gap-1 text-sm font-semibold text-muted-foreground disabled:opacity-40 hover:text-navy"
             >
               <ArrowLeft className="h-4 w-4" /> {t("workshop.back")}
