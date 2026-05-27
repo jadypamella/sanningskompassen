@@ -70,7 +70,7 @@ function WorkshopPage() {
     setError(null);
     try {
       const { runId } = await submit({ data: { topic_id: topicId, answers } });
-      navigate({ to: "/result/$runId", params: { runId } });
+      navigate({ to: "/vaccine-result/$runId", params: { runId } });
     } catch (e) {
       console.error(e);
       setError(t("workshop.error"));
