@@ -6,6 +6,7 @@ import { CompassMark } from "@/components/CompassMark";
 import { ArrowRight, BookOpen, Sparkles, Loader2, Hand, Zap, Target, Flame } from "lucide-react";
 import { analyzeClaim, listExampleClaims } from "@/lib/analyze.functions";
 import { getSessionId } from "@/lib/session";
+import { useT } from "@/lib/i18n";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -38,19 +39,20 @@ function LandingPage() {
   const { examples } = Route.useLoaderData();
   const navigate = useNavigate();
   const analyze = useServerFn(analyzeClaim);
+  const { t } = useT();
 
   const [claim, setClaim] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [loadingMsg, setLoadingMsg] = useState(0);
 
-  const messages = ["Analysing the claim...", "Scanning for the 5 tactics...", "Building your X-ray..."];
+  const messages = [t("index.loading.0"), t("index.loading.1"), t("index.loading.2")];
 
   useEffect(() => {
     if (!loading) return;
-    const t = setInterval(() => setLoadingMsg((m) => (m + 1) % messages.length), 1500);
-    return () => clearInterval(t);
-  }, [loading, messages.length]);
+    const id = setInterval(() => setLoadingMsg((m) => (m + 1) % 3), 1500);
+    return () => clearInterval(id);
+  }, [loading]);
 
   const count = claim.trim().length;
   const tooShort = count > 0 && count < 10;
@@ -67,7 +69,7 @@ function LandingPage() {
       navigate({ to: "/result/$checkId", params: { checkId } });
     } catch (err) {
       console.error(err);
-      setError("Something went wrong. Try again.");
+      setError(t("index.error"));
       setLoading(false);
     }
   }
@@ -82,18 +84,19 @@ function LandingPage() {
             <CompassMark size={72} className="drop-shadow-md shrink-0" />
             <div>
               <div className="text-[10px] md:text-xs uppercase tracking-[4px] text-gold font-semibold">
-                The Truth Compass
+                {t("brand.tagline")}
               </div>
-              <div className="text-xs text-muted-foreground">Järvaveckan · 2026 · Challenge 2</div>
+              <div className="text-xs text-muted-foreground">{t("index.eventLine")}</div>
             </div>
           </div>
 
           <h1 className="font-display font-extrabold text-navy text-4xl md:text-6xl leading-[1.05]">
-            Paste Any Political Claim. See The Trick Behind It.
+            {t("index.h1")}
           </h1>
           <p className="mt-4 text-base md:text-lg text-muted-foreground max-w-2xl">
-            You know valkompassen. This is the compass for what is true. Every check earns you XP toward the
-            <span className="font-semibold text-navy"> Truth Hunter</span> badge, and shows you the playbook the lie used.
+            {t("index.lead.before")}
+            <span className="font-semibold text-navy">{t("index.lead.badge")}</span>
+            {t("index.lead.after")}
           </p>
 
           <form onSubmit={onSubmit} className="mt-8 rounded-xl border border-border bg-background p-4 md:p-5 shadow-sm">
@@ -102,16 +105,16 @@ function LandingPage() {
               onChange={(e) => setClaim(e.target.value)}
               disabled={loading}
               rows={5}
-              placeholder="Paste a headline, a TikTok caption, a friend's message. We will show you what is true, what is uncertain, what is false, and which tactics it used to deceive."
+              placeholder={t("index.placeholder")}
               className="w-full resize-none bg-transparent text-navy placeholder:text-muted-foreground focus:outline-none text-base"
               maxLength={1200}
             />
             <div className="flex items-center justify-between mt-2 text-xs">
               <div className="text-muted-foreground">
                 {tooShort ? (
-                  <span className="text-lie">Add at least 10 characters.</span>
+                  <span className="text-lie">{t("index.tooShort")}</span>
                 ) : (
-                  <span className={tooLong ? "text-lie" : ""}>{count} / 1000 characters</span>
+                  <span className={tooLong ? "text-lie" : ""}>{t("index.chars", { count })}</span>
                 )}
               </div>
             </div>
@@ -128,7 +131,7 @@ function LandingPage() {
                   </>
                 ) : (
                   <>
-                    Run Quick Scan <ArrowRight className="h-4 w-4" />
+                    {t("index.cta.scan")} <ArrowRight className="h-4 w-4" />
                   </>
                 )}
               </button>
@@ -136,7 +139,7 @@ function LandingPage() {
                 to="/spot"
                 className="inline-flex items-center gap-2 rounded-md border border-navy/30 bg-paper px-5 py-3 font-semibold text-navy hover:bg-navy/5 transition"
               >
-                <Hand className="h-4 w-4" /> Or Enter The Swipe Arena
+                <Hand className="h-4 w-4" /> {t("index.cta.swipe")}
               </Link>
             </div>
 
@@ -145,7 +148,7 @@ function LandingPage() {
             {examples.length > 0 && (
               <div className="mt-5 pt-4 border-t border-border">
                 <div className="text-[10px] uppercase tracking-[2px] text-muted-foreground font-semibold mb-2">
-                  Starter Quests · Tap To Load
+                  {t("index.starterQuests")}
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {examples.map((ex: { slug: string; label: string; claim_text: string; demo_default: boolean }) => (
@@ -168,69 +171,61 @@ function LandingPage() {
       {/* Why it works */}
       <section className="bg-paper border-y border-border">
         <div className="mx-auto max-w-6xl px-4 py-14">
-          <div className="text-xs uppercase tracking-[4px] text-gold font-semibold mb-2">Why It Works</div>
+          <div className="text-xs uppercase tracking-[4px] text-gold font-semibold mb-2">{t("index.whyItWorks")}</div>
           <h2 className="font-display font-extrabold text-navy text-3xl md:text-4xl mb-8 max-w-2xl">
-            Every Check Shows You The Verdict AND The Trick. After 3 Checks, You Do Not Need Us Anymore.
+            {t("index.whyHeadline")}
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="rounded-lg bg-background border border-border p-6">
               <Sparkles className="h-6 w-6 text-gold mb-3" />
-              <h3 className="font-display font-bold text-navy text-lg mb-2">Tactics Labelled In Real Claims</h3>
-              <p className="text-sm text-muted-foreground">
-                Paste anything. We highlight which of 5 manipulation tactics it used and how.
-              </p>
+              <h3 className="font-display font-bold text-navy text-lg mb-2">{t("index.feature1.h")}</h3>
+              <p className="text-sm text-muted-foreground">{t("index.feature1.p")}</p>
             </div>
             <div className="rounded-lg bg-background border border-border p-6">
               <BookOpen className="h-6 w-6 text-gold mb-3" />
-              <h3 className="font-display font-bold text-navy text-lg mb-2">Cambridge Inoculation Research</h3>
-              <p className="text-sm text-muted-foreground">
-                Roozenbeek and van der Linden (2019, 2022) show that seeing the playbook builds lasting resistance.
-              </p>
+              <h3 className="font-display font-bold text-navy text-lg mb-2">{t("index.feature2.h")}</h3>
+              <p className="text-sm text-muted-foreground">{t("index.feature2.p")}</p>
             </div>
             <div className="rounded-lg bg-navy text-paper p-6 relative overflow-hidden">
               <div className="absolute inset-0 bg-halftone-gold opacity-20" />
-              <p className="font-display font-bold text-lg leading-snug relative">
-                This Is Passive Inoculation. You Build Resistance By Seeing The Playbook Labelled Inside Every Check.
-              </p>
+              <p className="font-display font-bold text-lg leading-snug relative">{t("index.feature3.p")}</p>
             </div>
           </div>
         </div>
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-14 text-center">
-        <div className="text-xs uppercase tracking-[4px] text-gold font-semibold mb-2">Choose Your Mode</div>
-        <h2 className="font-display font-extrabold text-navy text-2xl md:text-3xl mb-2">
-          Three Ways To Train Your Eye.
-        </h2>
-        <p className="text-sm text-muted-foreground">Earn XP. Unlock badges. Become a Truth Hunter.</p>
+        <div className="text-xs uppercase tracking-[4px] text-gold font-semibold mb-2">{t("index.modes.kicker")}</div>
+        <h2 className="font-display font-extrabold text-navy text-2xl md:text-3xl mb-2">{t("index.modes.h")}</h2>
+        <p className="text-sm text-muted-foreground">{t("index.modes.sub")}</p>
         <div className="grid md:grid-cols-3 gap-4 mt-8 text-left">
           <Link to="/" className="group rounded-lg border border-border bg-background p-5 hover:border-gold hover:-translate-y-0.5 transition">
             <div className="flex items-center justify-between">
-              <div className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[2px] text-gold font-semibold"><Zap className="h-3 w-3" /> Quick Mode</div>
+              <div className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[2px] text-gold font-semibold"><Zap className="h-3 w-3" /> {t("index.modes.quick.kicker")}</div>
               <span className="rounded-sm bg-gold/15 text-gold text-[9px] font-bold tracking-wider px-1.5 py-0.5">LVL 0 · +5 XP</span>
             </div>
-            <div className="font-display font-bold text-navy mt-2 text-lg">Quick Scan</div>
-            <p className="text-sm text-muted-foreground mt-2">2 Seconds. Verdict + Tactic X-Ray.</p>
-            <div className="mt-3 text-xs text-gold font-semibold opacity-0 group-hover:opacity-100 transition">Start scan →</div>
+            <div className="font-display font-bold text-navy mt-2 text-lg">{t("index.modes.quick.h")}</div>
+            <p className="text-sm text-muted-foreground mt-2">{t("index.modes.quick.p")}</p>
+            <div className="mt-3 text-xs text-gold font-semibold opacity-0 group-hover:opacity-100 transition">{t("index.modes.quick.cta")}</div>
           </Link>
           <Link to="/spot" className="group rounded-lg border border-border bg-background p-5 hover:border-gold hover:-translate-y-0.5 transition">
             <div className="flex items-center justify-between">
-              <div className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[2px] text-gold font-semibold"><Target className="h-3 w-3" /> Arena Mode</div>
+              <div className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[2px] text-gold font-semibold"><Target className="h-3 w-3" /> {t("index.modes.arena.kicker")}</div>
               <span className="rounded-sm bg-gold/15 text-gold text-[9px] font-bold tracking-wider px-1.5 py-0.5">LVL 1 · +50 XP</span>
             </div>
-            <div className="font-display font-bold text-navy mt-2 text-lg">Swipe Arena</div>
-            <p className="text-sm text-muted-foreground mt-2">Swipe 10 Cards. Fact Or Fake. Earn The Sharp Eye Badge.</p>
-            <div className="mt-3 text-xs text-gold font-semibold opacity-0 group-hover:opacity-100 transition">Enter arena →</div>
+            <div className="font-display font-bold text-navy mt-2 text-lg">{t("index.modes.arena.h")}</div>
+            <p className="text-sm text-muted-foreground mt-2">{t("index.modes.arena.p")}</p>
+            <div className="mt-3 text-xs text-gold font-semibold opacity-0 group-hover:opacity-100 transition">{t("index.modes.arena.cta")}</div>
           </Link>
           <Link to="/workshop" className="group rounded-lg border border-navy bg-navy text-paper p-5 hover:brightness-110 hover:-translate-y-0.5 transition relative overflow-hidden">
             <div className="absolute inset-0 bg-halftone-gold opacity-10 pointer-events-none" />
             <div className="relative flex items-center justify-between">
-              <div className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[2px] text-gold font-semibold"><Flame className="h-3 w-3" /> Boss Mode</div>
+              <div className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[2px] text-gold font-semibold"><Flame className="h-3 w-3" /> {t("index.modes.boss.kicker")}</div>
               <span className="rounded-sm bg-gold text-navy text-[9px] font-bold tracking-wider px-1.5 py-0.5">LVL 2 · +200 XP</span>
             </div>
-            <div className="font-display font-bold mt-2 text-lg relative">Vaccine</div>
-            <p className="text-sm text-paper/80 mt-2 relative">Build A Fake Yourself In 5 Guided Steps. Final Boss Of Inoculation.</p>
-            <div className="mt-3 text-xs text-gold font-semibold opacity-0 group-hover:opacity-100 transition relative">Take the challenge →</div>
+            <div className="font-display font-bold mt-2 text-lg relative">{t("index.modes.boss.h")}</div>
+            <p className="text-sm text-paper/80 mt-2 relative">{t("index.modes.boss.p")}</p>
+            <div className="mt-3 text-xs text-gold font-semibold opacity-0 group-hover:opacity-100 transition relative">{t("index.modes.boss.cta")}</div>
           </Link>
         </div>
       </section>
