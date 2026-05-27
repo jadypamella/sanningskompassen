@@ -4,7 +4,7 @@ import { motion, useMotionValue, useTransform, type PanInfo } from "framer-motio
 import { AppShell } from "@/components/AppShell";
 import { ClosingCTA } from "@/components/ClosingCTA";
 import { SPOT_DECK, TACTIC_LABELS, type SpotCard } from "@/lib/tactics";
-import { Check, X, RotateCcw, ArrowRight } from "lucide-react";
+import { Check, X, RotateCcw, ArrowRight, Target, Trophy, Zap, Sprout, Skull, type LucideIcon } from "lucide-react";
 
 export const Route = createFileRoute("/spot")({
   head: () => ({
