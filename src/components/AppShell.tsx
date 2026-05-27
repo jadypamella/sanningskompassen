@@ -29,7 +29,7 @@ const NAV_ITEMS: NavItem[] = [
 
 function LangSwitcher({ compact = false }: { compact?: boolean }) {
   const { lang, setLang, t } = useT();
-  const options: Lang[] = ["en", "sv"];
+  const options: Lang[] = ["sv", "en"];
   return (
     <div
       className={`inline-flex items-center gap-1 rounded-full border border-gold/40 bg-gold/5 p-0.5 ${
