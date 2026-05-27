@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { useEffect, useState } from "react";
 import { AppShell } from "@/components/AppShell";
-import { TACTICS, type TacticId } from "@/lib/tactics";
+import { TACTICS, getTacticExample, type TacticId } from "@/lib/tactics";
 import { listTopics } from "@/lib/topics.functions";
 import { scoreSubmission } from "@/lib/score.functions";
 import { ArrowLeft, ArrowRight, CheckCircle2, Loader2, Sparkles } from "lucide-react";
@@ -200,7 +200,7 @@ function WorkshopPage() {
             <h1 className="font-display font-extrabold text-navy text-2xl md:text-3xl">{tactic.name}</h1>
           </div>
           <p className="text-muted-foreground mb-4 leading-relaxed">{tactic.intro}</p>
-          <p className="text-sm text-navy italic mb-5 border-l-2 border-gold pl-3">[ {tactic.example} ]</p>
+          <p className="text-sm text-navy italic mb-5 border-l-2 border-gold pl-3">[ {getTacticExample(tactic.id, topics?.find((tp) => tp.id === topicId)?.slug)} ]</p>
 
           <textarea
             value={value}
