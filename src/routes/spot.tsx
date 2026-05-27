@@ -272,10 +272,11 @@ function SpotResults({ answers, onRestart }: { answers: Answer[]; onRestart: () 
   const score = answers.filter((a) => a.correct).length;
   const total = answers.length;
   const skill = useMemo(() => {
-    if (score >= 8) return "Sharp Eye";
-    if (score >= 5) return "Getting There";
-    if (score >= 2) return "Apprentice";
-    return "Need Practice";
+    if (score >= 9) return { label: "Truth Hunter", emoji: "🏆", xp: 100 };
+    if (score >= 7) return { label: "Sharp Eye", emoji: "🎯", xp: 75 };
+    if (score >= 5) return { label: "Rising Recruit", emoji: "⚡", xp: 50 };
+    if (score >= 2) return { label: "Apprentice", emoji: "🌱", xp: 25 };
+    return { label: "Caught By The Lie", emoji: "💀", xp: 10 };
   }, [score]);
 
   const tacticStats = useMemo(() => {
