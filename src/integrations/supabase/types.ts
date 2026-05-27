@@ -35,6 +35,66 @@ export type Database = {
         }
         Relationships: []
       }
+      checks: {
+        Row: {
+          claim_text: string
+          confidence: string
+          created_at: string
+          explanation: string
+          id: string
+          session_id: string | null
+          tactics: Json
+          verdict: string
+        }
+        Insert: {
+          claim_text: string
+          confidence: string
+          created_at?: string
+          explanation: string
+          id?: string
+          session_id?: string | null
+          tactics: Json
+          verdict: string
+        }
+        Update: {
+          claim_text?: string
+          confidence?: string
+          created_at?: string
+          explanation?: string
+          id?: string
+          session_id?: string | null
+          tactics?: Json
+          verdict?: string
+        }
+        Relationships: []
+      }
+      example_claims: {
+        Row: {
+          claim_text: string
+          demo_default: boolean
+          id: string
+          label: string
+          slug: string
+          sort_order: number
+        }
+        Insert: {
+          claim_text: string
+          demo_default?: boolean
+          id?: string
+          label: string
+          slug: string
+          sort_order?: number
+        }
+        Update: {
+          claim_text?: string
+          demo_default?: boolean
+          id?: string
+          label?: string
+          slug?: string
+          sort_order?: number
+        }
+        Relationships: []
+      }
       runs: {
         Row: {
           badge_slug: string | null
