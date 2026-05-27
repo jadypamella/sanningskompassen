@@ -30,7 +30,7 @@ const TEAM = [
   },
   {
     name: "Jakub Piniaha",
-    role: "Student",
+    role: "Statistics Student",
     photo: "/team/jakub.png",
     linkedin: "https://linkedin.com/in/jakub-piniaha-86a6a3295",
     github: "https://github.com/jadypamella/sanningskompassen.git",
