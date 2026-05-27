@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
+import { motion, useMotionValue, useTransform, type PanInfo } from "framer-motion";
 import { AppShell } from "@/components/AppShell";
 import { ClosingCTA } from "@/components/ClosingCTA";
 import { SPOT_DECK, TACTIC_LABELS, type SpotCard } from "@/lib/tactics";
