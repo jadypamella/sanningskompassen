@@ -228,7 +228,7 @@ function LandingPage() {
               <div className="text-[10px] uppercase tracking-[2px] text-gold font-semibold">🔥 Boss Mode</div>
               <span className="rounded-sm bg-gold text-navy text-[9px] font-bold tracking-wider px-1.5 py-0.5">LVL 2 · +200 XP</span>
             </div>
-            <div className="font-display font-bold mt-2 text-lg relative">Fake Forge</div>
+            <div className="font-display font-bold mt-2 text-lg relative">Vaccine</div>
             <p className="text-sm text-paper/80 mt-2 relative">Build A Fake Yourself In 5 Guided Steps. Final Boss Of Inoculation.</p>
             <div className="mt-3 text-xs text-gold font-semibold opacity-0 group-hover:opacity-100 transition relative">Take the challenge →</div>
           </Link>

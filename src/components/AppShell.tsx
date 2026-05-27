@@ -5,7 +5,7 @@ import { CompassMark } from "./CompassMark";
 
 const NAV_LINKS = [
   { to: "/spot", label: "Swipe Arena", badge: "LVL 1" },
-  { to: "/workshop", label: "Fake Forge", badge: "LVL 2" },
+  { to: "/workshop", label: "Vaccine", badge: "LVL 2" },
   { to: "/research", label: "Research", badge: null },
   { to: "/about", label: "The Crew", badge: null },
 ] as const;
@@ -106,7 +106,7 @@ export function Footer() {
               train your eye to spot the next lie on your own. Built for young voters in Järva.
             </p>
             <div className="inline-flex items-center gap-2 rounded-full bg-gold/15 px-3 py-1.5 text-[10px] uppercase tracking-[2px] text-gold font-bold">
-              <Compass className="h-3 w-3" /> Järvaveckan · 2026 · Challenge 2
+              <Compass className="h-3 w-3" /> Team 4 · Järvaveckan · 2026 · Challenge 2
             </div>
           </div>
 
@@ -131,7 +131,7 @@ export function Footer() {
               <li>
                 <Link to="/workshop" className="inline-flex items-center gap-2 text-paper/80 hover:text-gold transition">
                   <Hammer className="h-4 w-4 text-gold" />
-                  <span>Fake Forge</span>
+                  <span>Vaccine</span>
                   <span className="rounded-sm bg-gold/15 text-gold text-[9px] font-bold px-1.5 py-0.5">LVL 2</span>
                 </Link>
               </li>
