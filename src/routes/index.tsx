@@ -206,7 +206,7 @@ function LandingPage() {
         <div className="grid md:grid-cols-3 gap-4 mt-8 text-left">
           <Link to="/" className="group rounded-lg border border-border bg-background p-5 hover:border-gold hover:-translate-y-0.5 transition">
             <div className="flex items-center justify-between">
-              <div className="text-[10px] uppercase tracking-[2px] text-gold font-semibold">⚡ Quick Mode</div>
+              <div className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[2px] text-gold font-semibold"><Zap className="h-3 w-3" /> Quick Mode</div>
               <span className="rounded-sm bg-gold/15 text-gold text-[9px] font-bold tracking-wider px-1.5 py-0.5">LVL 0 · +5 XP</span>
             </div>
             <div className="font-display font-bold text-navy mt-2 text-lg">Quick Scan</div>
