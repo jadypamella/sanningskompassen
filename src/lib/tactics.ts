@@ -71,6 +71,45 @@ export const TACTICS: TacticDef[] = [
   },
 ];
 
+// Per-topic example overrides. Key by topic slug → tactic id → example string.
+export const TOPIC_EXAMPLES: Record<string, Partial<Record<TacticId, string>>> = {
+  voting_eligibility_jarva: {
+    clickbait: "SHOCKING: Are voters in Järva about to be banned from the next election? You won't believe what just leaked.",
+    false_authority: "According to a leaked memo from the Nordic Election Bureau, ID rules will change overnight.",
+    out_of_context_image: "Crowd being turned away from a polling station in Husby. (Photo is actually from a 2019 concert in Berlin.)",
+    fear_outrage_hook: "If this passes, your right to vote disappears overnight.",
+    us_vs_them: "Real Swedes know what voting means. The others want to take that right away from us.",
+  },
+  transport_under_25: {
+    clickbait: "EXPOSED: SL is secretly cancelling free transport for under-25s — buses stop next month?!",
+    false_authority: "A leaked internal report from the Stockholm Transit Authority confirms the rollback.",
+    out_of_context_image: "Empty SL bus at Tensta station, 'proof' the program already failed. (Photo is from a 2020 strike.)",
+    fear_outrage_hook: "If this passes, you'll pay full price tomorrow and lose your student job by Friday.",
+    us_vs_them: "Hard-working taxpayers vs the youth getting another free ride — pick a side.",
+  },
+  housing_jarva: {
+    clickbait: "BANNED: Are families in Järva really being kicked out next week? You won't believe what just leaked.",
+    false_authority: "According to a leaked report from the Stockholm Housing Council, evictions start in 30 days.",
+    out_of_context_image: "Demolition crews moving into Husby tonight. (Photo is actually from a 2018 site in Malmö.)",
+    fear_outrage_hook: "If this passes, your rent triples and your family is on the street by winter.",
+    us_vs_them: "Locals who built this neighbourhood vs the newcomers taking the keys — whose side are you on?",
+  },
+  school_funding_jarva: {
+    clickbait: "SHOCKING: Are Järva schools really losing all their funding next term? You won't believe what just leaked.",
+    false_authority: "A leaked internal memo from the Stockholm Education Bureau confirms the cuts.",
+    out_of_context_image: "Empty classroom in Rinkeby after 'forced closure'. (Photo is actually from a 2020 lockdown.)",
+    fear_outrage_hook: "If this passes, your kids lose their teachers overnight.",
+    us_vs_them: "Inner-city schools get everything. Järva kids get nothing. That's the real story.",
+  },
+};
+
+export function getTacticExample(id: TacticId, topicSlug?: string | null): string {
+  if (topicSlug && TOPIC_EXAMPLES[topicSlug]?.[id]) {
+    return TOPIC_EXAMPLES[topicSlug]![id]!;
+  }
+  return TACTICS.find((t) => t.id === id)!.example;
+}
+
 export function getTactic(id: TacticId): TacticDef {
   return TACTICS.find((t) => t.id === id)!;
 }
