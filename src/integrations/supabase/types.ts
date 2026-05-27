@@ -14,7 +14,145 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      badges: {
+        Row: {
+          description: string
+          min_score: number
+          name: string
+          slug: string
+        }
+        Insert: {
+          description: string
+          min_score: number
+          name: string
+          slug: string
+        }
+        Update: {
+          description?: string
+          min_score?: number
+          name?: string
+          slug?: string
+        }
+        Relationships: []
+      }
+      runs: {
+        Row: {
+          badge_slug: string | null
+          closing_takeaway: string | null
+          completed_at: string | null
+          created_at: string
+          id: string
+          manipulation_score: number | null
+          status: string
+          tactics_used: number | null
+          topic_id: string | null
+        }
+        Insert: {
+          badge_slug?: string | null
+          closing_takeaway?: string | null
+          completed_at?: string | null
+          created_at?: string
+          id?: string
+          manipulation_score?: number | null
+          status?: string
+          tactics_used?: number | null
+          topic_id?: string | null
+        }
+        Update: {
+          badge_slug?: string | null
+          closing_takeaway?: string | null
+          completed_at?: string | null
+          created_at?: string
+          id?: string
+          manipulation_score?: number | null
+          status?: string
+          tactics_used?: number | null
+          topic_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "runs_topic_id_fkey"
+            columns: ["topic_id"]
+            isOneToOne: false
+            referencedRelation: "topics"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      tactic_results: {
+        Row: {
+          created_at: string
+          detected: boolean
+          feedback: string | null
+          id: string
+          run_id: string
+          spot_lesson: string | null
+          tactic_id: string
+          tactic_score: number
+          user_text: string
+        }
+        Insert: {
+          created_at?: string
+          detected?: boolean
+          feedback?: string | null
+          id?: string
+          run_id: string
+          spot_lesson?: string | null
+          tactic_id: string
+          tactic_score?: number
+          user_text: string
+        }
+        Update: {
+          created_at?: string
+          detected?: boolean
+          feedback?: string | null
+          id?: string
+          run_id?: string
+          spot_lesson?: string | null
+          tactic_id?: string
+          tactic_score?: number
+          user_text?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "tactic_results_run_id_fkey"
+            columns: ["run_id"]
+            isOneToOne: false
+            referencedRelation: "runs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      topics: {
+        Row: {
+          created_at: string
+          demo_default: boolean
+          description: string
+          framing_prompt: string
+          id: string
+          slug: string
+          title: string
+        }
+        Insert: {
+          created_at?: string
+          demo_default?: boolean
+          description: string
+          framing_prompt: string
+          id?: string
+          slug: string
+          title: string
+        }
+        Update: {
+          created_at?: string
+          demo_default?: boolean
+          description?: string
+          framing_prompt?: string
+          id?: string
+          slug?: string
+          title?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
