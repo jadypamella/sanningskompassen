@@ -128,7 +128,7 @@ function LandingPage() {
                   </>
                 ) : (
                   <>
-                    Check this claim <ArrowRight className="h-4 w-4" />
+                    Run Quick Scan <ArrowRight className="h-4 w-4" />
                   </>
                 )}
               </button>
@@ -136,7 +136,7 @@ function LandingPage() {
                 to="/spot"
                 className="inline-flex items-center gap-2 rounded-md border border-navy/30 bg-paper px-5 py-3 font-semibold text-navy hover:bg-navy/5 transition"
               >
-                <Hand className="h-4 w-4" /> Or try the Spot game
+                <Hand className="h-4 w-4" /> Or Enter The Swipe Arena
               </Link>
             </div>
 
