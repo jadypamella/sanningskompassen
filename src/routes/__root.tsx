@@ -86,6 +86,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Sanningskompassen, The Truth Compass" },
+      { name: "description", content: "Sanningskompassen is a web app that teaches users to identify disinformation by having them write fake news." },
+      { property: "og:description", content: "Sanningskompassen is a web app that teaches users to identify disinformation by having them write fake news." },
+      { name: "twitter:description", content: "Sanningskompassen is a web app that teaches users to identify disinformation by having them write fake news." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/0BS0XMRFBoURSXQKNiKg2dcAhm73/social-images/social-1779882186907-logo-main-256.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/0BS0XMRFBoURSXQKNiKg2dcAhm73/social-images/social-1779882186907-logo-main-256.webp" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
