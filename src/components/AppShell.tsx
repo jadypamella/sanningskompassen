@@ -37,12 +37,6 @@ export function Header() {
           ))}
         </nav>
 
-        <Link
-          to="/"
-          className="hidden md:inline-flex items-center rounded-md bg-navy px-4 py-2 text-sm font-semibold text-paper hover:bg-navy/90 transition-colors"
-        >
-          Quick Scan
-        </Link>
 
         <button
           type="button"
