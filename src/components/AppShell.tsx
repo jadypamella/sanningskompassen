@@ -93,8 +93,12 @@ export function Footer() {
               The vaccine against political disinformation. Paste any claim, see the trick behind it, and
               train your eye to spot the next lie on your own. Built for young voters in Järva.
             </p>
-            <div className="inline-flex items-center gap-2 rounded-full bg-gold/15 px-3 py-1.5 text-[10px] uppercase tracking-[2px] text-gold font-bold">
-              <Compass className="h-3 w-3" /> Team 4 · Järvaveckan · 2026 · Challenge 2
+            <div className="flex flex-wrap items-center gap-1.5 text-[10px] uppercase tracking-[2px] font-bold">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-gold text-navy px-2.5 py-1">
+                <Compass className="h-3 w-3" /> Team 4
+              </span>
+              <span className="rounded-full bg-gold/15 text-gold px-2.5 py-1">Järvaveckan 2026</span>
+              <span className="rounded-full bg-gold/15 text-gold px-2.5 py-1">Challenge 2</span>
             </div>
           </div>
 
