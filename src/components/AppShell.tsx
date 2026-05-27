@@ -66,13 +66,9 @@ export function Header() {
                 )}
               </Link>
             ))}
-            <Link
-              to="/"
-              onClick={() => setOpen(false)}
-              className="mt-2 inline-flex justify-center rounded-md bg-navy px-4 py-3 text-sm font-semibold text-paper"
-            >
-              Quick Scan
-            </Link>
+          </nav>
+        </div>
+      )}
           </nav>
         </div>
       )}
