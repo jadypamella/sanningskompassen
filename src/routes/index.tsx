@@ -89,11 +89,11 @@ function LandingPage() {
           </div>
 
           <h1 className="font-display font-extrabold text-navy text-4xl md:text-6xl leading-[1.05]">
-            Paste any political claim. See the trick behind it.
+            Paste Any Political Claim. See The Trick Behind It.
           </h1>
           <p className="mt-4 text-base md:text-lg text-muted-foreground max-w-2xl">
-            You know valkompassen. This is the compass for what is true. Every check shows you the verdict
-            and the playbook the lie used, so you start spotting them on your own.
+            You know valkompassen. This is the compass for what is true. Every check earns you XP toward the
+            <span className="font-semibold text-navy"> Truth Hunter</span> badge, and shows you the playbook the lie used.
           </p>
 
           <form onSubmit={onSubmit} className="mt-8 rounded-xl border border-border bg-background p-4 md:p-5 shadow-sm">
@@ -128,7 +128,7 @@ function LandingPage() {
                   </>
                 ) : (
                   <>
-                    Check this claim <ArrowRight className="h-4 w-4" />
+                    Run Quick Scan <ArrowRight className="h-4 w-4" />
                   </>
                 )}
               </button>
@@ -136,7 +136,7 @@ function LandingPage() {
                 to="/spot"
                 className="inline-flex items-center gap-2 rounded-md border border-navy/30 bg-paper px-5 py-3 font-semibold text-navy hover:bg-navy/5 transition"
               >
-                <Hand className="h-4 w-4" /> Or try the Spot game
+                <Hand className="h-4 w-4" /> Or Enter The Swipe Arena
               </Link>
             </div>
 
@@ -145,7 +145,7 @@ function LandingPage() {
             {examples.length > 0 && (
               <div className="mt-5 pt-4 border-t border-border">
                 <div className="text-[10px] uppercase tracking-[2px] text-muted-foreground font-semibold mb-2">
-                  Try one of these
+                  Starter Quests · Tap To Load
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {examples.map((ex: { slug: string; label: string; claim_text: string; demo_default: boolean }) => (
@@ -168,21 +168,21 @@ function LandingPage() {
       {/* Why it works */}
       <section className="bg-paper border-y border-border">
         <div className="mx-auto max-w-6xl px-4 py-14">
-          <div className="text-xs uppercase tracking-[4px] text-gold font-semibold mb-2">Why it works</div>
+          <div className="text-xs uppercase tracking-[4px] text-gold font-semibold mb-2">Why It Works</div>
           <h2 className="font-display font-extrabold text-navy text-3xl md:text-4xl mb-8 max-w-2xl">
-            Every check shows you the verdict AND the trick. After 3 checks, you do not need us anymore.
+            Every Check Shows You The Verdict AND The Trick. After 3 Checks, You Do Not Need Us Anymore.
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="rounded-lg bg-background border border-border p-6">
               <Sparkles className="h-6 w-6 text-gold mb-3" />
-              <h3 className="font-display font-bold text-navy text-lg mb-2">Labelled in real claims</h3>
+              <h3 className="font-display font-bold text-navy text-lg mb-2">Tactics Labelled In Real Claims</h3>
               <p className="text-sm text-muted-foreground">
                 Paste anything. We highlight which of 5 manipulation tactics it used and how.
               </p>
             </div>
             <div className="rounded-lg bg-background border border-border p-6">
               <BookOpen className="h-6 w-6 text-gold mb-3" />
-              <h3 className="font-display font-bold text-navy text-lg mb-2">Cambridge inoculation research</h3>
+              <h3 className="font-display font-bold text-navy text-lg mb-2">Cambridge Inoculation Research</h3>
               <p className="text-sm text-muted-foreground">
                 Roozenbeek and van der Linden (2019, 2022) show that seeing the playbook builds lasting resistance.
               </p>
@@ -190,7 +190,7 @@ function LandingPage() {
             <div className="rounded-lg bg-navy text-paper p-6 relative overflow-hidden">
               <div className="absolute inset-0 bg-halftone-gold opacity-20" />
               <p className="font-display font-bold text-lg leading-snug relative">
-                This is passive inoculation. You build resistance by seeing the playbook labelled inside every check.
+                This Is Passive Inoculation. You Build Resistance By Seeing The Playbook Labelled Inside Every Check.
               </p>
             </div>
           </div>
@@ -198,24 +198,39 @@ function LandingPage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-14 text-center">
-        <h2 className="font-display font-extrabold text-navy text-2xl md:text-3xl mb-4">
-          Three ways to use the compass.
+        <div className="text-xs uppercase tracking-[4px] text-gold font-semibold mb-2">Choose Your Mode</div>
+        <h2 className="font-display font-extrabold text-navy text-2xl md:text-3xl mb-2">
+          Three Ways To Train Your Eye.
         </h2>
+        <p className="text-sm text-muted-foreground">Earn XP. Unlock badges. Become a Truth Hunter.</p>
         <div className="grid md:grid-cols-3 gap-4 mt-8 text-left">
-          <Link to="/" className="rounded-lg border border-border bg-background p-5 hover:border-gold transition">
-            <div className="text-[10px] uppercase tracking-[2px] text-gold font-semibold">Default</div>
-            <div className="font-display font-bold text-navy mt-1">Paste and check</div>
-            <p className="text-sm text-muted-foreground mt-2">2 seconds. Verdict + tactic X-ray.</p>
+          <Link to="/" className="group rounded-lg border border-border bg-background p-5 hover:border-gold hover:-translate-y-0.5 transition">
+            <div className="flex items-center justify-between">
+              <div className="text-[10px] uppercase tracking-[2px] text-gold font-semibold">⚡ Quick Mode</div>
+              <span className="rounded-sm bg-gold/15 text-gold text-[9px] font-bold tracking-wider px-1.5 py-0.5">LVL 0 · +5 XP</span>
+            </div>
+            <div className="font-display font-bold text-navy mt-2 text-lg">Quick Scan</div>
+            <p className="text-sm text-muted-foreground mt-2">2 Seconds. Verdict + Tactic X-Ray.</p>
+            <div className="mt-3 text-xs text-gold font-semibold opacity-0 group-hover:opacity-100 transition">Start scan →</div>
           </Link>
-          <Link to="/spot" className="rounded-lg border border-border bg-background p-5 hover:border-gold transition">
-            <div className="text-[10px] uppercase tracking-[2px] text-gold font-semibold">Game</div>
-            <div className="font-display font-bold text-navy mt-1">Spot the Fake</div>
-            <p className="text-sm text-muted-foreground mt-2">Swipe 10 cards. Fact or fake. See your score.</p>
+          <Link to="/spot" className="group rounded-lg border border-border bg-background p-5 hover:border-gold hover:-translate-y-0.5 transition">
+            <div className="flex items-center justify-between">
+              <div className="text-[10px] uppercase tracking-[2px] text-gold font-semibold">🎯 Arena Mode</div>
+              <span className="rounded-sm bg-gold/15 text-gold text-[9px] font-bold tracking-wider px-1.5 py-0.5">LVL 1 · +50 XP</span>
+            </div>
+            <div className="font-display font-bold text-navy mt-2 text-lg">Swipe Arena</div>
+            <p className="text-sm text-muted-foreground mt-2">Swipe 10 Cards. Fact Or Fake. Earn The Sharp Eye Badge.</p>
+            <div className="mt-3 text-xs text-gold font-semibold opacity-0 group-hover:opacity-100 transition">Enter arena →</div>
           </Link>
-          <Link to="/workshop" className="rounded-lg border border-border bg-background p-5 hover:border-gold transition">
-            <div className="text-[10px] uppercase tracking-[2px] text-gold font-semibold">Deep</div>
-            <div className="font-display font-bold text-navy mt-1">Workshop</div>
-            <p className="text-sm text-muted-foreground mt-2">Build a fake yourself in 5 guided steps.</p>
+          <Link to="/workshop" className="group rounded-lg border border-navy bg-navy text-paper p-5 hover:brightness-110 hover:-translate-y-0.5 transition relative overflow-hidden">
+            <div className="absolute inset-0 bg-halftone-gold opacity-10 pointer-events-none" />
+            <div className="relative flex items-center justify-between">
+              <div className="text-[10px] uppercase tracking-[2px] text-gold font-semibold">🔥 Boss Mode</div>
+              <span className="rounded-sm bg-gold text-navy text-[9px] font-bold tracking-wider px-1.5 py-0.5">LVL 2 · +200 XP</span>
+            </div>
+            <div className="font-display font-bold mt-2 text-lg relative">Fake Forge</div>
+            <p className="text-sm text-paper/80 mt-2 relative">Build A Fake Yourself In 5 Guided Steps. Final Boss Of Inoculation.</p>
+            <div className="mt-3 text-xs text-gold font-semibold opacity-0 group-hover:opacity-100 transition relative">Take the challenge →</div>
           </Link>
         </div>
       </section>

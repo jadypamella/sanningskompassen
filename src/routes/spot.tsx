@@ -93,20 +93,21 @@ function SpotPage() {
 function SpotIntro({ onStart }: { onStart: () => void }) {
   return (
     <div className="text-center space-y-6">
-      <div className="text-xs uppercase tracking-[4px] text-gold font-semibold">Spot the Fake</div>
+      <div className="inline-flex items-center gap-2 rounded-full bg-gold/15 px-3 py-1 text-[10px] uppercase tracking-[3px] text-gold font-bold">
+        🎯 Arena Mode · Lvl 1 · +50 XP
+      </div>
       <h1 className="font-display font-extrabold text-navy text-4xl md:text-5xl">
-        10 cards. Fact or fake.
+        Swipe Arena: 10 Cards. Fact Or Fake.
       </h1>
       <p className="text-muted-foreground max-w-md mx-auto">
-        Tap Fact or Fake on each card. See how sharp your eye is for political manipulation. Same 5 tactics
-        appear here as in the X-ray.
+        Swipe Right For Fact, Left For Fake. Score 8+ to unlock the <span className="font-bold text-navy">Sharp Eye</span> badge.
       </p>
       <button
         type="button"
         onClick={onStart}
         className="inline-flex items-center gap-2 rounded-md bg-gold px-8 py-3 font-semibold text-navy hover:brightness-95 transition"
       >
-        Start <ArrowRight className="h-4 w-4" />
+        Enter The Arena <ArrowRight className="h-4 w-4" />
       </button>
     </div>
   );
@@ -271,10 +272,11 @@ function SpotResults({ answers, onRestart }: { answers: Answer[]; onRestart: () 
   const score = answers.filter((a) => a.correct).length;
   const total = answers.length;
   const skill = useMemo(() => {
-    if (score >= 8) return "Sharp Eye";
-    if (score >= 5) return "Getting There";
-    if (score >= 2) return "Apprentice";
-    return "Need Practice";
+    if (score >= 9) return { label: "Truth Hunter", emoji: "🏆", xp: 100 };
+    if (score >= 7) return { label: "Sharp Eye", emoji: "🎯", xp: 75 };
+    if (score >= 5) return { label: "Rising Recruit", emoji: "⚡", xp: 50 };
+    if (score >= 2) return { label: "Apprentice", emoji: "🌱", xp: 25 };
+    return { label: "Caught By The Lie", emoji: "💀", xp: 10 };
   }, [score]);
 
   const tacticStats = useMemo(() => {
@@ -293,19 +295,20 @@ function SpotResults({ answers, onRestart }: { answers: Answer[]; onRestart: () 
   return (
     <div className="space-y-8">
       <div className="text-center">
-        <div className="text-xs uppercase tracking-[4px] text-gold font-semibold mb-2">Your score</div>
+        <div className="text-xs uppercase tracking-[4px] text-gold font-semibold mb-2">Your Score</div>
         <div className="font-display font-extrabold text-navy text-7xl md:text-8xl tabular-nums">
           {score}
           <span className="text-muted-foreground"> / {total}</span>
         </div>
-        <div className="mt-3 inline-block rounded-full bg-navy text-paper px-5 py-2 font-display font-bold">
-          {skill}
+        <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-navy text-paper px-5 py-2 font-display font-bold">
+          <span className="text-xl">{skill.emoji}</span> {skill.label}
         </div>
+        <div className="mt-2 text-xs uppercase tracking-[3px] text-gold font-bold">+{skill.xp} XP Earned</div>
       </div>
 
       {tacticStats.length > 0 && (
         <div className="rounded-xl border border-border bg-background p-5">
-          <h3 className="font-display font-bold text-navy mb-3">Tactic breakdown</h3>
+          <h3 className="font-display font-bold text-navy mb-3">Tactic Breakdown</h3>
           <ul className="text-sm text-navy space-y-2">
             {tacticStats.map(([id, s]) => (
               <li key={id} className="flex justify-between gap-4">
@@ -319,7 +322,7 @@ function SpotResults({ answers, onRestart }: { answers: Answer[]; onRestart: () 
         </div>
       )}
 
-      <ClosingCTA secondaryLabel="Paste a claim of your own" secondaryTo="/" />
+      <ClosingCTA secondaryLabel="Run A Quick Scan" secondaryTo="/" />
 
       <div className="flex flex-wrap justify-center gap-3">
         <button
@@ -327,13 +330,13 @@ function SpotResults({ answers, onRestart }: { answers: Answer[]; onRestart: () 
           onClick={onRestart}
           className="inline-flex items-center gap-2 rounded-md border border-navy/30 bg-background px-5 py-2.5 text-sm font-semibold text-navy hover:bg-navy/5 transition"
         >
-          <RotateCcw className="h-4 w-4" /> Play again
+          <RotateCcw className="h-4 w-4" /> Replay Arena
         </button>
         <Link
           to="/workshop"
           className="inline-flex items-center gap-2 rounded-md border border-navy/30 bg-background px-5 py-2.5 text-sm font-semibold text-navy hover:bg-navy/5 transition"
         >
-          Try the Workshop
+          Enter The Fake Forge →
         </Link>
       </div>
     </div>
