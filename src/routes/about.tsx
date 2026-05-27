@@ -43,7 +43,7 @@ const TEAM = [
     photo: "/team/jakub.png",
     email: "piniahajakub@gmail.com",
     linkedin: "https://linkedin.com/in/jakub-piniaha-86a6a3295",
-    github: "https://github.com/Jakubs-Hackathons",
+    github: "https://github.com/jadypamella/sanningskompassen.git",
   },
   {
     name: "Agnes Cohen",
