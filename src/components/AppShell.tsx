@@ -173,7 +173,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="https://www.cam.ac.uk/stories/inoculatingagainstfakenews"
+                  href="https://www.nature.com/articles/s41599-019-0279-9"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-paper/80 hover:text-gold transition"
