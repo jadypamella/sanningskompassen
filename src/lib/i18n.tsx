@@ -115,9 +115,9 @@ const EN: Dict = {
   "workshop.step0.empty": "No topics available right now. Refresh the page.",
   "workshop.step0.recommended": "Recommended for first try",
   "workshop.step0.start": "Start",
-  "workshop.submitting.tagline": "Hold on, the antidote is forming.",
+  "workshop.submitting.tagline": "Hold on, the vaccine is forming.",
   "workshop.loading.0": "Analysing your tactics...",
-  "workshop.loading.1": "Mixing the antidote...",
+  "workshop.loading.1": "Mixing the vaccine...",
   "workshop.loading.2": "Spotting your tricks...",
   "workshop.loading.3": "Reading between your lines...",
   "workshop.error":
@@ -316,9 +316,9 @@ const SV: Dict = {
   "workshop.step0.empty": "Inga ämnen tillgängliga just nu. Ladda om sidan.",
   "workshop.step0.recommended": "Rekommenderas för första försöket",
   "workshop.step0.start": "Starta",
-  "workshop.submitting.tagline": "Vänta lite, motgiftet bildas.",
+  "workshop.submitting.tagline": "Vänta lite, vaccinet bildas.",
   "workshop.loading.0": "Analyserar dina taktiker...",
-  "workshop.loading.1": "Blandar motgiftet...",
+  "workshop.loading.1": "Blandar vaccinet...",
   "workshop.loading.2": "Hittar dina trick...",
   "workshop.loading.3": "Läser mellan dina rader...",
   "workshop.error":
