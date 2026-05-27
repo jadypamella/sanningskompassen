@@ -4,10 +4,10 @@ import { Menu, X } from "lucide-react";
 import { CompassMark } from "./CompassMark";
 
 const NAV_LINKS = [
-  { to: "/spot", label: "Spot game" },
-  { to: "/workshop", label: "Workshop" },
-  { to: "/research", label: "Research" },
-  { to: "/about", label: "About" },
+  { to: "/spot", label: "Swipe Arena", badge: "LVL 1" },
+  { to: "/workshop", label: "Fake Forge", badge: "LVL 2" },
+  { to: "/research", label: "Research", badge: null },
+  { to: "/about", label: "The Crew", badge: null },
 ] as const;
 
 export function Header() {
