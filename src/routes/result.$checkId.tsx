@@ -10,6 +10,7 @@ import { getCheck } from "@/lib/analyze.functions";
 import { TACTICS } from "@/lib/tactics";
 import { incrementChecksCount } from "@/lib/session";
 import { Loader2, Hand, Wrench } from "lucide-react";
+import { useT } from "@/lib/i18n";
 
 export const Route = createFileRoute("/result/$checkId")({
   head: ({ params }) => ({
