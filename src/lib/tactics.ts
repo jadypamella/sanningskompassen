@@ -81,18 +81,18 @@ export const TOPIC_EXAMPLES: Record<string, Partial<Record<TacticId, string>>> =
     us_vs_them: "Real Swedes know what voting means. The others want to take that right away from us.",
   },
   transport_under_25: {
-    clickbait: "EXPOSED: SL is secretly cancelling free transport for under-25s — buses stop next month?!",
+    clickbait: "EXPOSED: SL is secretly cancelling free transport for under-25s, buses stop next month?!",
     false_authority: "A leaked internal report from the Stockholm Transit Authority confirms the rollback.",
     out_of_context_image: "Empty SL bus at Tensta station, 'proof' the program already failed. (Photo is from a 2020 strike.)",
     fear_outrage_hook: "If this passes, you'll pay full price tomorrow and lose your student job by Friday.",
-    us_vs_them: "Hard-working taxpayers vs the youth getting another free ride — pick a side.",
+    us_vs_them: "Hard-working taxpayers vs the youth getting another free ride, pick a side.",
   },
   housing_jarva: {
     clickbait: "BANNED: Are families in Järva really being kicked out next week? You won't believe what just leaked.",
     false_authority: "According to a leaked report from the Stockholm Housing Council, evictions start in 30 days.",
     out_of_context_image: "Demolition crews moving into Husby tonight. (Photo is actually from a 2018 site in Malmö.)",
     fear_outrage_hook: "If this passes, your rent triples and your family is on the street by winter.",
-    us_vs_them: "Locals who built this neighbourhood vs the newcomers taking the keys — whose side are you on?",
+    us_vs_them: "Locals who built this neighbourhood vs the newcomers taking the keys, whose side are you on?",
   },
   school_funding_jarva: {
     clickbait: "SHOCKING: Are Järva schools really losing all their funding next term? You won't believe what just leaked.",

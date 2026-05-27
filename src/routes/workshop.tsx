@@ -176,7 +176,7 @@ function WorkshopPage() {
             <div>
               <div className="text-[10px] uppercase tracking-[2px] text-gold font-semibold">{t("workshop.topicLabel")}</div>
               <div className="font-display font-bold text-navy text-sm md:text-base">
-                {topics?.find((tp) => tp.id === topicId)?.title ?? "—"}
+                {topics?.find((tp) => tp.id === topicId)?.title ?? "·"}
               </div>
             </div>
             <button
