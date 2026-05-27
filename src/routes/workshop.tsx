@@ -12,7 +12,7 @@ import { useT } from "@/lib/i18n";
 export const Route = createFileRoute("/workshop")({
   head: () => ({
     meta: [
-      { title: "Workshop · Sanningskompassen" },
+      { title: "Vaccine · Sanningskompassen" },
       {
         name: "description",
         content: "Pick a Järva election topic and write your own fake news in 5 guided steps.",
