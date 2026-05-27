@@ -129,6 +129,9 @@ const EN: Dict = {
   "workshop.back": "Back",
   "workshop.next": "Next tactic",
   "workshop.submit": "Submit and see the X-ray",
+  "workshop.topicLabel": "Your topic",
+  "workshop.changeTopic": "Change topic",
+
 
   // Result (check)
   "result.notFound": "That check was not found.",
@@ -327,6 +330,9 @@ const SV: Dict = {
   "workshop.back": "Tillbaka",
   "workshop.next": "Nästa taktik",
   "workshop.submit": "Skicka och se röntgenbilden",
+  "workshop.topicLabel": "Ditt ämne",
+  "workshop.changeTopic": "Byt ämne",
+
 
   // Result (check)
   "result.notFound": "Den kollen hittades inte.",
