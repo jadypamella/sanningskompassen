@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { useEffect, useState } from "react";
 import { AppShell } from "@/components/AppShell";
-import { TACTICS, type TacticId } from "@/lib/tactics";
+import { TACTICS, getTacticExample, type TacticId } from "@/lib/tactics";
 import { listTopics } from "@/lib/topics.functions";
 import { scoreSubmission } from "@/lib/score.functions";
 import { ArrowLeft, ArrowRight, CheckCircle2, Loader2, Sparkles } from "lucide-react";
