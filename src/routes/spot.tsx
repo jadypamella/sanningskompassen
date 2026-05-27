@@ -151,49 +151,119 @@ function SpotRound({
           key={card.id + "-back"}
           className="relative rounded-2xl border border-border bg-background shadow-lg min-h-[340px] p-6 md:p-8 flex flex-col animate-in fade-in zoom-in-95 duration-300"
         >
-        ) : (
-          <>
-            <div className="flex items-center justify-between mb-4">
-              <div
-                className={`inline-flex items-center gap-2 rounded-full px-4 py-1.5 font-display font-extrabold text-sm ${
-                  card.truth === "TRUE" ? "bg-truth text-paper" : "bg-lie text-paper"
-                }`}
-              >
-                {card.truth === "TRUE" ? <Check className="h-4 w-4" /> : <X className="h-4 w-4" />}
-                {card.truth}
-              </div>
-              <div
-                className={`text-xs font-semibold uppercase tracking-[2px] ${
-                  correct ? "text-truth" : "text-lie"
-                }`}
-              >
-                {correct ? "You got this right" : "Caught you"}
-              </div>
-            </div>
-            <p className="text-navy text-sm md:text-base flex-1">{card.explanation}</p>
-            {card.tactics.length > 0 && (
-              <div className="mt-4 flex flex-wrap gap-2">
-                {card.tactics.map((t) => (
-                  <span
-                    key={t}
-                    className="rounded-full bg-gold/20 border border-gold/50 text-navy text-xs px-3 py-1 font-medium"
-                  >
-                    {TACTIC_LABELS[t]}
-                  </span>
-                ))}
-              </div>
-            )}
-            <button
-              type="button"
-              onClick={onNext}
-              className="mt-6 inline-flex items-center justify-center gap-2 rounded-md bg-navy px-6 py-3 font-semibold text-paper hover:bg-navy/90 transition"
+          <div className="flex items-center justify-between mb-4">
+            <div
+              className={`inline-flex items-center gap-2 rounded-full px-4 py-1.5 font-display font-extrabold text-sm ${
+                card.truth === "TRUE" ? "bg-truth text-paper" : "bg-lie text-paper"
+              }`}
             >
-              {index + 1 >= total ? "See results" : "Next card"} <ArrowRight className="h-4 w-4" />
-            </button>
-          </>
-        )}
-      </div>
+              {card.truth === "TRUE" ? <Check className="h-4 w-4" /> : <X className="h-4 w-4" />}
+              {card.truth}
+            </div>
+            <div
+              className={`text-xs font-semibold uppercase tracking-[2px] ${
+                correct ? "text-truth" : "text-lie"
+              }`}
+            >
+              {correct ? "You got this right" : "Caught you"}
+            </div>
+          </div>
+          <p className="text-navy text-sm md:text-base flex-1">{card.explanation}</p>
+          {card.tactics.length > 0 && (
+            <div className="mt-4 flex flex-wrap gap-2">
+              {card.tactics.map((t) => (
+                <span
+                  key={t}
+                  className="rounded-full bg-gold/20 border border-gold/50 text-navy text-xs px-3 py-1 font-medium"
+                >
+                  {TACTIC_LABELS[t]}
+                </span>
+              ))}
+            </div>
+          )}
+          <button
+            type="button"
+            onClick={onNext}
+            className="mt-6 inline-flex items-center justify-center gap-2 rounded-md bg-navy px-6 py-3 font-semibold text-paper hover:bg-navy/90 transition"
+          >
+            {index + 1 >= total ? "See results" : "Next card"} <ArrowRight className="h-4 w-4" />
+          </button>
+        </div>
+      )}
     </div>
+  );
+}
+
+function SwipeCard({
+  card,
+  index,
+  total,
+  onAnswer,
+}: {
+  card: SpotCard;
+  index: number;
+  total: number;
+  onAnswer: (g: "TRUE" | "FALSE") => void;
+}) {
+  const x = useMotionValue(0);
+  const rotate = useTransform(x, [-200, 0, 200], [-18, 0, 18]);
+  const fakeOpacity = useTransform(x, [-150, -40, 0], [1, 0.6, 0]);
+  const factOpacity = useTransform(x, [0, 40, 150], [0, 0.6, 1]);
+
+  function handleDragEnd(_: unknown, info: PanInfo) {
+    const threshold = 110;
+    if (info.offset.x > threshold || info.velocity.x > 600) onAnswer("TRUE");
+    else if (info.offset.x < -threshold || info.velocity.x < -600) onAnswer("FALSE");
+  }
+
+  return (
+    <motion.div
+      key={card.id + "-front"}
+      drag="x"
+      dragConstraints={{ left: 0, right: 0 }}
+      dragElastic={0.7}
+      onDragEnd={handleDragEnd}
+      style={{ x, rotate }}
+      whileTap={{ cursor: "grabbing" }}
+      className="relative rounded-2xl border border-border bg-background shadow-lg min-h-[340px] p-6 md:p-8 flex flex-col cursor-grab touch-none select-none"
+    >
+      {/* swipe labels */}
+      <motion.div
+        style={{ opacity: fakeOpacity }}
+        className="pointer-events-none absolute top-6 left-6 rotate-[-12deg] rounded-md border-4 border-lie text-lie px-3 py-1 font-display font-extrabold uppercase tracking-wider"
+      >
+        Fake
+      </motion.div>
+      <motion.div
+        style={{ opacity: factOpacity }}
+        className="pointer-events-none absolute top-6 right-6 rotate-[12deg] rounded-md border-4 border-truth text-truth px-3 py-1 font-display font-extrabold uppercase tracking-wider"
+      >
+        Fact
+      </motion.div>
+
+      <div className="text-[10px] uppercase tracking-[3px] text-muted-foreground font-semibold mb-3">
+        Card {index + 1} of {total} · swipe or tap
+      </div>
+      <p className="font-display font-bold text-navy text-xl md:text-2xl flex-1 leading-snug">
+        {card.claim}
+      </p>
+      <div className="mt-6 grid grid-cols-2 gap-3">
+        <button
+          type="button"
+          onClick={() => onAnswer("FALSE")}
+          className="flex items-center justify-center gap-2 rounded-lg border-2 border-lie text-lie py-4 font-semibold hover:bg-lie hover:text-paper transition"
+        >
+          <X className="h-5 w-5" /> Fake
+        </button>
+        <button
+          type="button"
+          onClick={() => onAnswer("TRUE")}
+          className="flex items-center justify-center gap-2 rounded-lg bg-gold text-navy py-4 font-semibold hover:brightness-95 transition"
+        >
+          <Check className="h-5 w-5" /> Fact
+        </button>
+      </div>
+    </motion.div>
   );
 }
 
