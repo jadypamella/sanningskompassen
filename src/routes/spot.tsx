@@ -336,7 +336,7 @@ function SpotResults({ answers, onRestart }: { answers: Answer[]; onRestart: () 
           to="/workshop"
           className="inline-flex items-center gap-2 rounded-md border border-navy/30 bg-background px-5 py-2.5 text-sm font-semibold text-navy hover:bg-navy/5 transition"
         >
-          Enter The Fake Forge →
+          Enter The Vaccine →
         </Link>
       </div>
     </div>

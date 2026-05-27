@@ -6,7 +6,7 @@ export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title: "About · Sanningskompassen" },
-      { name: "description", content: "The five-person team behind Sanningskompassen, built at Järvaveckan 2026." },
+      { name: "description", content: "The five-person team behind Sanningskompassen, built at Järvaveckan 2026 as Team 4." },
     ],
   }),
   component: AboutPage,
@@ -43,7 +43,7 @@ const TEAM = [
     photo: "/team/jakub.png",
     email: "piniahajakub@gmail.com",
     linkedin: "https://linkedin.com/in/jakub-piniaha-86a6a3295",
-    github: "https://github.com/Jakubs-Hackathons",
+    github: "https://github.com/jadypamella/sanningskompassen.git",
   },
   {
     name: "Agnes Cohen",
@@ -64,7 +64,7 @@ function AboutPage() {
           Built by five people who picked the harder direction.
         </h1>
         <p className="text-muted-foreground max-w-3xl">
-          We built Sanningskompassen at the Järvaveckan Hackathon on May 27, 2026, for Challenge 2, countering
+          We built Sanningskompassen at the Järvaveckan Hackathon on May 27, 2026, as Team 4 for Challenge 2, countering
           disinformation. Instead of building yet another fact-checker, we built the vaccine. The mechanic is based on
           inoculation research from Cambridge (Roozenbeek and van der Linden).
         </p>
@@ -119,7 +119,7 @@ function AboutPage() {
         </div>
 
         <div className="mt-12 rounded-lg bg-paper border border-border p-6 text-sm text-muted-foreground">
-          Built at Järvaveckan Hackathon 2026, on Lovable. Riso Resistance brand by the team. Tactic taxonomy adapted
+          Built at Järvaveckan Hackathon 2026 as Team 4, on Lovable. Riso Resistance brand by the team. Tactic taxonomy adapted
           from Bad News (DROG and Cambridge). Inoculation logic based on Roozenbeek and van der Linden, 2019 and 2022.
         </div>
       </section>
