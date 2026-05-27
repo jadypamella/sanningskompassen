@@ -124,7 +124,10 @@ export const analyzeClaim = createServerFn({ method: "POST" })
         console.error(`[analyze] attempt ${i + 1} failed`, e);
       }
     }
-    if (!result) throw new Error("analysis_failed: " + String(lastErr));
+    if (!result) {
+      console.error("[analyze] all attempts failed", lastErr);
+      throw new Error("analysis_failed");
+    }
 
     const { data: row, error } = await supabaseAdmin
       .from("checks")
