@@ -151,7 +151,7 @@ const EN: Dict = {
   // Result (run)
   "run.loading": "Loading your X-ray...",
   "run.notFound": "That session was not found. Returning home...",
-  "run.crumb.workshop": "Workshop",
+  "run.crumb.workshop": "Vaccine",
   "run.crumb.your": "Your X-ray",
   "run.score.kicker": "Manipulation Score",
   "run.score.before": "Your fake would fool ",
@@ -168,7 +168,7 @@ const EN: Dict = {
   "run.cta.polling": "How to vote",
   "run.cta.another": "Try another topic",
   "run.readResearch": "Read the research behind this",
-  "run.workshopsToday": "Workshops completed today:",
+  "run.workshopsToday": "Vaccines completed today:",
 
   // ClosingCTA
   "closing.h":
@@ -196,7 +196,7 @@ const EN: Dict = {
   "research.p1":
     "Inoculation theory is the idea that exposure to a weakened version of a manipulation builds mental antibodies against the real thing. The same way a vaccine works for the body, a guided practice with the tactics of misinformation works for the brain.",
   "research.p2":
-    "Sanningskompassen turns that theory into a five-minute workshop. By writing fake political content with your own hands, you internalise the shape of clickbait, false authority, displaced images, fear hooks, and us-vs-them framing. Once you have built one, you cannot un-see it on your feed.",
+    "Sanningskompassen turns that theory into a five-minute vaccine. By writing fake political content with your own hands, you internalise the shape of clickbait, false authority, displaced images, fear hooks, and us-vs-them framing. Once you have built one, you cannot un-see it on your feed.",
   "research.openSource": "Open source",
   "research.note":
     "The same logic powers anti-phishing training in cybersecurity. Sending employees a controlled fake phish measurably improves their ability to spot real ones. Sanningskompassen applies that pattern to political information.",
@@ -352,7 +352,7 @@ const SV: Dict = {
   // Result (run)
   "run.loading": "Laddar din röntgenbild...",
   "run.notFound": "Den sessionen hittades inte. Återvänder hem...",
-  "run.crumb.workshop": "Verkstad",
+  "run.crumb.workshop": "Vaccin",
   "run.crumb.your": "Din röntgenbild",
   "run.score.kicker": "Manipulationspoäng",
   "run.score.before": "Din fejk skulle lura ",
@@ -369,7 +369,7 @@ const SV: Dict = {
   "run.cta.polling": "Så röstar du",
   "run.cta.another": "Prova ett annat ämne",
   "run.readResearch": "Läs forskningen bakom",
-  "run.workshopsToday": "Verkstäder idag:",
+  "run.workshopsToday": "Vacciner idag:",
 
   // ClosingCTA
   "closing.h":
@@ -397,7 +397,7 @@ const SV: Dict = {
   "research.p1":
     "Inokuleringsteorin går ut på att exponering för en försvagad version av en manipulation bygger mentala antikroppar mot den riktiga varan. På samma sätt som ett vaccin fungerar för kroppen fungerar guidad övning med desinformationstaktiker för hjärnan.",
   "research.p2":
-    "Sanningskompassen omvandlar den teorin till en femminutersverkstad. Genom att med egna händer skriva falskt politiskt innehåll internaliserar du formen hos klickbete, falsk auktoritet, förflyttade bilder, rädslokrokar och vi-mot-dem-ramar. När du har byggt en kan du inte avse den i ditt flöde.",
+    "Sanningskompassen omvandlar den teorin till ett femminutersvaccin. Genom att med egna händer skriva falskt politiskt innehåll internaliserar du formen hos klickbete, falsk auktoritet, förflyttade bilder, rädslokrokar och vi-mot-dem-ramar. När du har byggt en kan du inte avse den i ditt flöde.",
   "research.openSource": "Öppen källa",
   "research.note":
     "Samma logik driver anti-phishing-träning inom cybersäkerhet. Att skicka kontrollerade fejk-phishingmejl till anställda förbättrar mätbart deras förmåga att upptäcka riktiga. Sanningskompassen tillämpar samma mönster på politisk information.",
