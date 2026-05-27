@@ -14,7 +14,7 @@ import { Route as SpotRouteImport } from './routes/spot'
 import { Route as ResearchRouteImport } from './routes/research'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ResultRunIdRouteImport } from './routes/result.$runId'
+import { Route as VaccineResultRunIdRouteImport } from './routes/vaccine-result.$runId'
 import { Route as ResultCheckIdRouteImport } from './routes/result.$checkId'
 
 const WorkshopRoute = WorkshopRouteImport.update({
@@ -42,9 +42,9 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ResultRunIdRoute = ResultRunIdRouteImport.update({
-  id: '/result/$runId',
-  path: '/result/$runId',
+const VaccineResultRunIdRoute = VaccineResultRunIdRouteImport.update({
+  id: '/vaccine-result/$runId',
+  path: '/vaccine-result/$runId',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ResultCheckIdRoute = ResultCheckIdRouteImport.update({
@@ -60,7 +60,7 @@ export interface FileRoutesByFullPath {
   '/spot': typeof SpotRoute
   '/workshop': typeof WorkshopRoute
   '/result/$checkId': typeof ResultCheckIdRoute
-  '/result/$runId': typeof ResultRunIdRoute
+  '/vaccine-result/$runId': typeof VaccineResultRunIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -69,7 +69,7 @@ export interface FileRoutesByTo {
   '/spot': typeof SpotRoute
   '/workshop': typeof WorkshopRoute
   '/result/$checkId': typeof ResultCheckIdRoute
-  '/result/$runId': typeof ResultRunIdRoute
+  '/vaccine-result/$runId': typeof VaccineResultRunIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -79,7 +79,7 @@ export interface FileRoutesById {
   '/spot': typeof SpotRoute
   '/workshop': typeof WorkshopRoute
   '/result/$checkId': typeof ResultCheckIdRoute
-  '/result/$runId': typeof ResultRunIdRoute
+  '/vaccine-result/$runId': typeof VaccineResultRunIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -90,7 +90,7 @@ export interface FileRouteTypes {
     | '/spot'
     | '/workshop'
     | '/result/$checkId'
-    | '/result/$runId'
+    | '/vaccine-result/$runId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -99,7 +99,7 @@ export interface FileRouteTypes {
     | '/spot'
     | '/workshop'
     | '/result/$checkId'
-    | '/result/$runId'
+    | '/vaccine-result/$runId'
   id:
     | '__root__'
     | '/'
@@ -108,7 +108,7 @@ export interface FileRouteTypes {
     | '/spot'
     | '/workshop'
     | '/result/$checkId'
-    | '/result/$runId'
+    | '/vaccine-result/$runId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -118,7 +118,7 @@ export interface RootRouteChildren {
   SpotRoute: typeof SpotRoute
   WorkshopRoute: typeof WorkshopRoute
   ResultCheckIdRoute: typeof ResultCheckIdRoute
-  ResultRunIdRoute: typeof ResultRunIdRoute
+  VaccineResultRunIdRoute: typeof VaccineResultRunIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -158,11 +158,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/result/$runId': {
-      id: '/result/$runId'
-      path: '/result/$runId'
-      fullPath: '/result/$runId'
-      preLoaderRoute: typeof ResultRunIdRouteImport
+    '/vaccine-result/$runId': {
+      id: '/vaccine-result/$runId'
+      path: '/vaccine-result/$runId'
+      fullPath: '/vaccine-result/$runId'
+      preLoaderRoute: typeof VaccineResultRunIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/result/$checkId': {
@@ -182,7 +182,7 @@ const rootRouteChildren: RootRouteChildren = {
   SpotRoute: SpotRoute,
   WorkshopRoute: WorkshopRoute,
   ResultCheckIdRoute: ResultCheckIdRoute,
-  ResultRunIdRoute: ResultRunIdRoute,
+  VaccineResultRunIdRoute: VaccineResultRunIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

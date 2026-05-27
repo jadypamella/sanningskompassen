@@ -9,7 +9,7 @@ import { TACTICS, reachBand } from "@/lib/tactics";
 import { Award, ArrowRight, RotateCcw, MapPin, BookOpen } from "lucide-react";
 import { useT } from "@/lib/i18n";
 
-export const Route = createFileRoute("/result/$runId")({
+export const Route = createFileRoute("/vaccine-result/$runId")({
   head: () => ({
     meta: [
       { title: "Your X-ray · Sanningskompassen" },
