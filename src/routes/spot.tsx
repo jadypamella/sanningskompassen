@@ -94,7 +94,7 @@ function SpotIntro({ onStart }: { onStart: () => void }) {
   return (
     <div className="text-center space-y-6">
       <div className="inline-flex items-center gap-2 rounded-full bg-gold/15 px-3 py-1 text-[10px] uppercase tracking-[3px] text-gold font-bold">
-        🎯 Arena Mode · Lvl 1 · +50 XP
+        <Target className="h-3 w-3" /> Arena Mode · Lvl 1 · +50 XP
       </div>
       <h1 className="font-display font-extrabold text-navy text-4xl md:text-5xl">
         Swipe Arena: 10 Cards. Fact Or Fake.
