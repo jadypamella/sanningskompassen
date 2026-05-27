@@ -203,7 +203,7 @@ const EN: Dict = {
 
 const SV: Dict = {
   // Nav / chrome
-  "brand.tagline": "Sanningskompassen",
+  "brand.tagline": "Vaccinet mot desinformation",
   "nav.quickScan": "Snabbskanning",
   "nav.vaccine": "Vaccin",
   "nav.swipeArena": "Svep-arenan",
