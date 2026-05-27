@@ -89,11 +89,11 @@ function LandingPage() {
           </div>
 
           <h1 className="font-display font-extrabold text-navy text-4xl md:text-6xl leading-[1.05]">
-            Paste any political claim. See the trick behind it.
+            Paste Any Political Claim. See The Trick Behind It.
           </h1>
           <p className="mt-4 text-base md:text-lg text-muted-foreground max-w-2xl">
-            You know valkompassen. This is the compass for what is true. Every check shows you the verdict
-            and the playbook the lie used, so you start spotting them on your own.
+            You know valkompassen. This is the compass for what is true. Every check earns you XP toward the
+            <span className="font-semibold text-navy"> Truth Hunter</span> badge, and shows you the playbook the lie used.
           </p>
 
           <form onSubmit={onSubmit} className="mt-8 rounded-xl border border-border bg-background p-4 md:p-5 shadow-sm">
