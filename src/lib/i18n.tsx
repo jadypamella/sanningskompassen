@@ -129,6 +129,9 @@ const EN: Dict = {
   "workshop.back": "Back",
   "workshop.next": "Next tactic",
   "workshop.submit": "Submit and see the X-ray",
+  "workshop.topicLabel": "Your topic",
+  "workshop.changeTopic": "Change topic",
+
 
   // Result (check)
   "result.notFound": "That check was not found.",
