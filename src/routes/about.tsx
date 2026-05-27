@@ -22,13 +22,6 @@ const TEAM = [
     github: "https://github.com/jadypamella",
   },
   {
-    name: "Hossam Elshahaby",
-    role: "SW Engineer",
-    photo: "/team/hossam.png",
-    linkedin: "https://linkedin.com/in/helshahaby",
-    github: null,
-  },
-  {
     name: "Li Walter de Perlét",
     role: "Public Sector Consultant",
     photo: "/team/li.png",
@@ -49,7 +42,15 @@ const TEAM = [
     linkedin: "https://linkedin.com/in/agnes-cohen-b63816300/",
     github: null,
   },
+  {
+    name: "Hossam Elshahaby",
+    role: "SW Engineer",
+    photo: "/team/hossam.png",
+    linkedin: "https://linkedin.com/in/helshahaby",
+    github: null,
+  },
 ];
+
 
 function AboutPage() {
   const { t } = useT();
