@@ -23,10 +23,15 @@ export function Header() {
           </div>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-navy">
+        <nav className="hidden md:flex items-center gap-5 text-sm font-medium text-navy">
           {NAV_LINKS.map((l) => (
-            <Link key={l.to} to={l.to} className="hover:text-gold transition-colors">
+            <Link key={l.to} to={l.to} className="inline-flex items-center gap-1.5 hover:text-gold transition-colors">
               {l.label}
+              {l.badge && (
+                <span className="rounded-sm bg-gold/20 text-gold text-[9px] font-bold tracking-wider px-1.5 py-0.5">
+                  {l.badge}
+                </span>
+              )}
             </Link>
           ))}
         </nav>
@@ -35,7 +40,7 @@ export function Header() {
           to="/"
           className="hidden md:inline-flex items-center rounded-md bg-navy px-4 py-2 text-sm font-semibold text-paper hover:bg-navy/90 transition-colors"
         >
-          Check a claim
+          Quick Scan
         </Link>
 
         <button
