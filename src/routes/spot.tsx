@@ -322,7 +322,7 @@ function SpotResults({ answers, onRestart }: { answers: Answer[]; onRestart: () 
         </div>
       )}
 
-      <ClosingCTA secondaryLabel="Paste a claim of your own" secondaryTo="/" />
+      <ClosingCTA secondaryLabel="Run A Quick Scan" secondaryTo="/" />
 
       <div className="flex flex-wrap justify-center gap-3">
         <button
@@ -330,13 +330,13 @@ function SpotResults({ answers, onRestart }: { answers: Answer[]; onRestart: () 
           onClick={onRestart}
           className="inline-flex items-center gap-2 rounded-md border border-navy/30 bg-background px-5 py-2.5 text-sm font-semibold text-navy hover:bg-navy/5 transition"
         >
-          <RotateCcw className="h-4 w-4" /> Play again
+          <RotateCcw className="h-4 w-4" /> Replay Arena
         </button>
         <Link
           to="/workshop"
           className="inline-flex items-center gap-2 rounded-md border border-navy/30 bg-background px-5 py-2.5 text-sm font-semibold text-navy hover:bg-navy/5 transition"
         >
-          Try the Workshop
+          Enter The Fake Forge →
         </Link>
       </div>
     </div>
