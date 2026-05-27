@@ -1,6 +1,7 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
+import { useQuery } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
 import { AppShell } from "@/components/AppShell";
 import { VerdictPill } from "@/components/VerdictPill";
 import { TacticXrayCard, type TacticAnalysis } from "@/components/TacticXrayCard";
@@ -9,7 +10,7 @@ import { ClosingCTA } from "@/components/ClosingCTA";
 import { getCheck } from "@/lib/analyze.functions";
 import { TACTICS } from "@/lib/tactics";
 import { incrementChecksCount } from "@/lib/session";
-import { Loader2, Hand, Wrench } from "lucide-react";
+import { Loader2, Hand, Wrench, ArrowLeft } from "lucide-react";
 import { useT } from "@/lib/i18n";
 
 export const Route = createFileRoute("/result/$checkId")({
@@ -34,47 +35,37 @@ type CheckRow = {
 
 function ResultPage() {
   const { checkId } = Route.useParams();
-  const navigate = useNavigate();
   const fetchCheck = useServerFn(getCheck);
   const { t } = useT();
 
-  const [data, setData] = useState<{ check: CheckRow; checksToday: number } | null>(null);
-  const [err, setErr] = useState<string | null>(null);
+  const { data, isLoading, error } = useQuery({
+    queryKey: ["check", checkId],
+    queryFn: () => fetchCheck({ data: { checkId } }) as Promise<{ check: CheckRow; checksToday: number }>,
+    retry: false,
+  });
+
   const [sessionCount, setSessionCount] = useState(0);
-
   useEffect(() => {
-    setSessionCount(incrementChecksCount());
-  }, [checkId]);
+    if (data) setSessionCount(incrementChecksCount());
+  }, [data]);
 
-  useEffect(() => {
-    let cancelled = false;
-    setData(null);
-    setErr(null);
-    fetchCheck({ data: { checkId } })
-      .then((d) => {
-        if (!cancelled) setData(d as unknown as { check: CheckRow; checksToday: number });
-      })
-      .catch((e) => {
-        console.error(e);
-        if (!cancelled) {
-          setErr(t("result.notFound"));
-          setTimeout(() => navigate({ to: "/" }), 1500);
-        }
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, [checkId, fetchCheck, navigate, t]);
-
-  if (err) {
+  if (error) {
     return (
       <AppShell>
-        <div className="mx-auto max-w-3xl px-4 py-20 text-center text-navy">{err}</div>
+        <div className="mx-auto max-w-md px-4 py-20 text-center space-y-5">
+          <p className="text-navy font-display text-xl font-semibold">{t("result.notFound")}</p>
+          <Link
+            to="/"
+            className="inline-flex items-center gap-2 rounded-md bg-navy px-5 py-2.5 font-semibold text-paper hover:bg-navy/90"
+          >
+            <ArrowLeft className="h-4 w-4" /> {t("result.crumb.home")}
+          </Link>
+        </div>
       </AppShell>
     );
   }
 
-  if (!data) {
+  if (isLoading || !data) {
     return (
       <AppShell>
         <div className="mx-auto max-w-3xl px-4 py-20 flex flex-col items-center gap-4 text-navy">
