@@ -225,7 +225,7 @@ function LandingPage() {
           <Link to="/workshop" className="group rounded-lg border border-navy bg-navy text-paper p-5 hover:brightness-110 hover:-translate-y-0.5 transition relative overflow-hidden">
             <div className="absolute inset-0 bg-halftone-gold opacity-10 pointer-events-none" />
             <div className="relative flex items-center justify-between">
-              <div className="text-[10px] uppercase tracking-[2px] text-gold font-semibold">🔥 Boss Mode</div>
+              <div className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[2px] text-gold font-semibold"><Flame className="h-3 w-3" /> Boss Mode</div>
               <span className="rounded-sm bg-gold text-navy text-[9px] font-bold tracking-wider px-1.5 py-0.5">LVL 2 · +200 XP</span>
             </div>
             <div className="font-display font-bold mt-2 text-lg relative">Vaccine</div>
