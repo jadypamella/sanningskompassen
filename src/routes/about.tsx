@@ -69,9 +69,9 @@ function AboutPage() {
           inoculation research from Cambridge (Roozenbeek and van der Linden).
         </p>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 flex flex-wrap justify-center gap-6">
           {TEAM.map((m) => (
-            <div key={m.name} className="rounded-xl border border-border bg-background p-6 text-center">
+            <div key={m.name} className="w-full sm:w-[300px] rounded-xl border border-border bg-background p-6 text-center">
               <div className="mx-auto mb-4 h-[120px] w-[120px] rounded-full p-[3px] bg-gold">
                 <div className="h-full w-full rounded-full bg-navy overflow-hidden border-2 border-paper">
                   <img
@@ -86,28 +86,31 @@ function AboutPage() {
               </div>
               <h3 className="font-display font-extrabold text-navy text-lg">{m.name}</h3>
               <div className="text-[10px] uppercase tracking-[1.5px] text-gold font-semibold mt-1">{m.role}</div>
-              <div className="mt-3 flex items-center justify-center gap-3 text-xs">
-                <a href={`mailto:${m.email}`} className="inline-flex items-center gap-1 text-muted-foreground hover:text-gold">
-                  <Mail className="h-3 w-3" /> {m.email}
+              <div className="mt-3 flex items-center justify-center gap-2 text-xs text-muted-foreground">
+                <Mail className="h-4 w-4 shrink-0" />
+                <a href={`mailto:${m.email}`} className="hover:text-gold truncate">
+                  {m.email}
                 </a>
               </div>
-              <div className="mt-2 flex items-center justify-center gap-3 text-xs">
+              <div className="mt-3 flex items-center justify-center gap-3">
                 <a
                   href={m.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-gold underline decoration-gold underline-offset-4"
+                  aria-label={`${m.name} on LinkedIn`}
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-gold/40 text-gold hover:bg-gold hover:text-navy transition"
                 >
-                  <Linkedin className="h-3 w-3" /> in
+                  <Linkedin className="h-4 w-4" />
                 </a>
                 {m.github && (
                   <a
                     href={m.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-gold underline decoration-gold underline-offset-4"
+                    aria-label={`${m.name} on GitHub`}
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-gold/40 text-gold hover:bg-gold hover:text-navy transition"
                   >
-                    <Github className="h-3 w-3" /> gh
+                    <Github className="h-4 w-4" />
                   </a>
                 )}
               </div>
