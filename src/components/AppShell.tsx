@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Zap, Target, Hammer, BookOpen, Users, Mail, Github, ExternalLink, Compass, Vote } from "lucide-react";
 import { CompassMark } from "./CompassMark";
 
 const NAV_LINKS = [
